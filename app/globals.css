@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #f9f7f2;
+  --color-beige: #f3ede3;
+  --color-beige-dark: #e8dfd0;
+  --color-forest: #1b3022;
+  --color-forest-light: #2a4a35;
+  --color-sage: #d8e2d6;
+  --color-sage-muted: #e8efe6;
+  --color-gold: #c5a059;
+  --color-gold-light: #d4b87a;
+  --color-gold-dark: #a8863f;
+  --color-lavender: #e8e0ef;
+  --color-lavender-dark: #9b7fb8;
+  --color-ink: #1a1a1a;
+  --color-muted: #5c5c5c;
+  --color-muted-light: #8a8a8a;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-gold) 35%, transparent);
+  color: var(--color-forest);
+}
+
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Hero image organic masks (SVG clipPath ids defined in Hero.tsx) */
+.hero-image-mask {
+  clip-path: url(#hero-curve-mobile);
+}
+
+@media (min-width: 1024px) {
+  .hero-image-mask {
+    clip-path: url(#hero-curve-desktop);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

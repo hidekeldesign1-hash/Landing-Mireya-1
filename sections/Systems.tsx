@@ -50,7 +50,7 @@ export function Systems() {
                   {system.description}
                 </p>
                 <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-forest sm:text-[11px]">
-                  Tópicos · Apoyo sistémico · Guía · Objetivo
+                  {system.focus}
                 </p>
               </article>
             </MotionItem>

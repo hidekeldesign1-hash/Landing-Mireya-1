@@ -123,7 +123,7 @@ export function ConsultationSocial() {
                 <button
                   type="button"
                   onClick={prev}
-                  className="inline-flex h-10 w-10 items-center justify-center border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
                   aria-label="Caso anterior"
                 >
                   <ChevronLeftIcon className="h-5 w-5" />
@@ -144,7 +144,7 @@ export function ConsultationSocial() {
                 <button
                   type="button"
                   onClick={next}
-                  className="inline-flex h-10 w-10 items-center justify-center border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
                   aria-label="Caso siguiente"
                 >
                   <ChevronRightIcon className="h-5 w-5" />

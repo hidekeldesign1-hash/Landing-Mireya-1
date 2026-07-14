@@ -38,7 +38,7 @@ export function Hero() {
           >
             <motion.h1
               variants={reduceMotion ? undefined : staggerItem}
-              className="font-serif text-[1.75rem] font-normal leading-[1.2] tracking-tight text-ink sm:text-[2.15rem] lg:text-[2.35rem] xl:text-[2.65rem]"
+              className="font-sans text-[1.75rem] font-bold leading-[1.15] tracking-tight text-ink sm:text-[2.15rem] lg:text-[2.35rem] xl:text-[2.65rem]"
             >
               Sé lo frustrante que puede ser mirarte al espejo y sentir que has
               intentado de todo sin encontrar una solución real.
@@ -58,7 +58,7 @@ export function Hero() {
             >
               <Button
                 href="#camino-1"
-                className="shrink-0 px-5 py-2.5 text-sm whitespace-nowrap"
+                className="shrink-0 px-5 py-2.5 whitespace-nowrap"
               >
                 Quiero empezar hoy
                 <ArrowRightIcon className="h-4 w-4" />
@@ -66,7 +66,7 @@ export function Hero() {
               <Button
                 href="#camino-2"
                 variant="outline"
-                className="shrink-0 border-gold px-5 py-2.5 text-sm whitespace-nowrap text-ink hover:bg-gold/10 hover:text-ink"
+                className="shrink-0 px-5 py-2.5 whitespace-nowrap"
               >
                 Quiero entender qué me está pasando
               </Button>
@@ -93,15 +93,15 @@ export function Hero() {
           </div>
 
           {/* Badge — fully inside the image quadrant */}
-          <div className="absolute bottom-8 right-6 z-10 flex h-[7.5rem] w-[7.5rem] flex-col items-center justify-center rounded-full bg-gradient-to-b from-forest-light to-forest p-3 text-center shadow-[0_12px_40px_-12px_rgba(27,48,34,0.55)] sm:bottom-10 sm:right-8 sm:h-32 sm:w-32 lg:bottom-12 lg:right-10 lg:h-[8.5rem] lg:w-[8.5rem]">
-            <LeafIcon className="mb-1 h-4 w-4 text-gold sm:h-5 sm:w-5" />
-            <p className="px-1 font-sans text-[0.58rem] font-medium uppercase leading-[1.25] tracking-[0.06em] text-cream sm:text-[0.62rem] lg:text-[0.68rem]">
+          <div className="absolute bottom-8 right-6 z-10 flex h-[7.5rem] w-[7.5rem] flex-col items-center justify-center rounded-full bg-ink p-3 text-center shadow-[0_12px_40px_-12px_rgba(26,42,58,0.45)] sm:bottom-10 sm:right-8 sm:h-32 sm:w-32 lg:bottom-12 lg:right-10 lg:h-[8.5rem] lg:w-[8.5rem]">
+            <LeafIcon className="mb-1 h-4 w-4 text-forest sm:h-5 sm:w-5" />
+            <p className="px-1 font-sans text-[0.58rem] font-semibold uppercase leading-[1.25] tracking-[0.06em] text-white sm:text-[0.62rem] lg:text-[0.68rem]">
               La piel no es el enemigo. Es el mensajero.
             </p>
             <svg
               viewBox="0 0 24 24"
               fill="none"
-              className="mt-1 h-3.5 w-3.5 text-cream/80"
+              className="mt-1 h-3.5 w-3.5 text-white/80"
               aria-hidden
             >
               <path

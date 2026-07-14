@@ -26,25 +26,25 @@ export function SkinLanguage() {
         </MotionSection>
 
         <MotionSection stagger className="mt-12">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 lg:gap-3">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6">
             {symptoms.map((symptom) => {
               const active = symptom.id === selectedId;
               return (
-                <MotionItem key={symptom.id}>
+                <MotionItem key={symptom.id} className="min-w-0">
                   <button
                     type="button"
                     onClick={() => setSelectedId(symptom.id)}
                     className={cn(
-                      "group flex w-full flex-col items-center text-center transition-transform duration-300",
+                      "group flex w-full min-w-0 flex-col items-center px-1 text-center transition-transform duration-300",
                       active ? "scale-[1.02]" : "hover:scale-[1.02]",
                     )}
                     aria-pressed={active}
                   >
                     <div
                       className={cn(
-                        "hexagon relative mb-3 aspect-square w-full max-w-[120px] overflow-hidden bg-beige transition-shadow duration-300",
+                        "hexagon relative mb-3 aspect-square w-full max-w-[100px] overflow-hidden bg-beige transition-shadow duration-300 sm:max-w-[110px]",
                         active
-                          ? "ring-2 ring-gold ring-offset-2 ring-offset-cream shadow-lg"
+                          ? "ring-2 ring-forest ring-offset-2 ring-offset-cream shadow-lg"
                           : "opacity-90 group-hover:opacity-100",
                       )}
                     >
@@ -52,22 +52,22 @@ export function SkinLanguage() {
                         src={symptom.image}
                         alt={symptom.name}
                         fill
-                        sizes="120px"
+                        sizes="110px"
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="font-serif text-sm text-forest sm:text-base">
+                    <h3 className="w-full break-words font-sans text-[11px] font-semibold uppercase leading-tight tracking-wide text-ink sm:text-xs lg:text-[13px]">
                       {symptom.name}
                     </h3>
-                    <p className="mt-1 line-clamp-2 text-[11px] leading-snug text-muted sm:text-xs">
+                    <p className="mt-1.5 line-clamp-2 w-full text-[10px] leading-snug text-muted sm:text-[11px]">
                       {symptom.shortDescription}
                     </p>
                     <span
                       className={cn(
-                        "mt-2 inline-flex h-7 w-7 items-center justify-center rounded-full transition-colors",
+                        "mt-2.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors",
                         active
-                          ? "bg-gold text-forest"
-                          : "bg-gold/15 text-gold group-hover:bg-gold group-hover:text-forest",
+                          ? "bg-forest text-white"
+                          : "bg-forest/15 text-forest group-hover:bg-forest group-hover:text-white",
                       )}
                       aria-hidden
                     >
@@ -91,10 +91,10 @@ export function SkinLanguage() {
             >
               <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
                 <div className="space-y-5 lg:col-span-4">
-                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-gold-dark">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-forest">
                     Qué descubres
                   </p>
-                  <h3 className="font-serif text-2xl text-forest sm:text-3xl">
+                  <h3 className="font-sans text-2xl font-bold tracking-tight text-ink sm:text-3xl">
                     {selected.name}
                   </h3>
                   <ul className="space-y-4">
@@ -110,11 +110,11 @@ export function SkinLanguage() {
                       },
                     ].map((item) => (
                       <li key={item.title} className="flex gap-3">
-                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold">
+                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest/15 text-forest">
                           <CheckIcon className="h-3.5 w-3.5" />
                         </span>
                         <div>
-                          <p className="text-sm font-medium text-forest">
+                          <p className="text-sm font-semibold text-ink">
                             {item.title}
                           </p>
                           <p className="mt-1 text-sm leading-relaxed text-muted">
@@ -147,7 +147,7 @@ export function SkinLanguage() {
 
                 <div className="space-y-5 lg:col-span-4">
                   <div className="rounded-2xl bg-cream p-5 shadow-sm">
-                    <p className="text-xs font-medium uppercase tracking-[0.15em] text-gold-dark">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-forest">
                       Productos sugeridos
                     </p>
                     <ul className="mt-4 space-y-3">
@@ -156,7 +156,7 @@ export function SkinLanguage() {
                           key={product.name}
                           className="border-b border-beige-dark/50 pb-3 last:border-0 last:pb-0"
                         >
-                          <p className="text-sm font-medium text-forest">
+                          <p className="text-sm font-semibold text-ink">
                             {product.name}
                           </p>
                           <p className="text-xs text-muted">
@@ -186,7 +186,7 @@ export function SkinLanguage() {
                           />
                         </div>
                         <div>
-                          <p className="text-xs font-medium text-forest">
+                          <p className="text-xs font-semibold text-ink">
                             {t.name}
                           </p>
                           <p className="text-[11px] leading-snug text-muted">
@@ -204,7 +204,7 @@ export function SkinLanguage() {
                   Nuestros productos pueden ayudarte aunque no realices una
                   evaluación. Si deseas empezar hoy, puedes hacerlo.
                 </p>
-                <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-forest/80 sm:text-base">
+                <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-ink/80 sm:text-base">
                   Algunas personas desean ir un paso más allá y descubrir si
                   existe algo interno que pueda estar influyendo en su piel. Si
                   tú también quieres comprenderla mejor, puedes realizar nuestra{" "}

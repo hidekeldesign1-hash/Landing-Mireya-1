@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #f9f7f2;
-  --color-beige: #f3ede3;
-  --color-beige-dark: #e8dfd0;
-  --color-forest: #1b3022;
-  --color-forest-light: #2a4a35;
-  --color-sage: #d8e2d6;
-  --color-sage-muted: #e8efe6;
-  --color-gold: #c5a059;
-  --color-gold-light: #d4b87a;
-  --color-gold-dark: #a8863f;
-  --color-lavender: #e8e0ef;
-  --color-lavender-dark: #9b7fb8;
-  --color-ink: #1a1a1a;
-  --color-muted: #5c5c5c;
-  --color-muted-light: #8a8a8a;
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  /* DM Ceuticals Shopify brand system */
+  --color-cream: #ffffff;
+  --color-beige: #f3f8f9;
+  --color-beige-dark: #e2eef0;
+  --color-forest: #00a3a6;
+  --color-forest-light: #00b8bb;
+  --color-sage: #dff3f3;
+  --color-sage-muted: #eef8f8;
+  --color-gold: #00a3a6;
+  --color-gold-light: #33b5b7;
+  --color-gold-dark: #008a8d;
+  --color-lavender: #e8f4f5;
+  --color-lavender-dark: #00a3a6;
+  --color-ink: #1a2a3a;
+  --color-muted: #5a6a78;
+  --color-muted-light: #8a97a3;
+  --font-sans: var(--font-montserrat);
+  --font-serif: var(--font-montserrat);
 }
 
 html {
@@ -33,8 +34,8 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-gold) 35%, transparent);
-  color: var(--color-forest);
+  background-color: color-mix(in srgb, var(--color-forest) 30%, transparent);
+  color: var(--color-ink);
 }
 
 .hexagon {

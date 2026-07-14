@@ -20,7 +20,7 @@ export function IconCircle({
   return (
     <div
       className={cn(
-        "inline-flex items-center justify-center rounded-full border border-gold/40 bg-cream text-gold",
+        "inline-flex items-center justify-center rounded-full border border-forest/35 bg-white text-forest",
         sizes[size],
         className,
       )}

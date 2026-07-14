@@ -22,22 +22,22 @@ const accentStyles: Record<
   { card: string; badge: string; button: "primary" | "gold" | "outline"; iconBg: string }
 > = {
   green: {
-    card: "bg-sage-muted/80 border-sage",
-    badge: "bg-forest text-cream",
+    card: "bg-sage-muted border-sage",
+    badge: "bg-forest text-white",
     button: "primary",
     iconBg: "bg-forest/10 text-forest",
   },
   lavender: {
-    card: "bg-lavender/70 border-lavender-dark/20",
-    badge: "bg-lavender-dark text-cream",
+    card: "bg-beige border-beige-dark",
+    badge: "bg-ink text-white",
     button: "outline",
-    iconBg: "bg-lavender-dark/10 text-lavender-dark",
+    iconBg: "bg-ink/10 text-ink",
   },
   gold: {
-    card: "bg-[#f7f0e2] border-gold/30",
-    badge: "bg-gold text-forest",
+    card: "bg-white border-forest/25",
+    badge: "bg-forest text-white",
     button: "gold",
-    iconBg: "bg-gold/15 text-gold-dark",
+    iconBg: "bg-forest/10 text-forest",
   },
 };
 
@@ -77,7 +77,7 @@ export function ThreePaths() {
                   >
                     Camino {index + 1}
                   </span>
-                  <h3 className="mt-4 font-serif text-2xl leading-snug text-forest">
+                  <h3 className="mt-4 font-sans text-2xl font-bold leading-snug tracking-tight text-ink">
                     {path.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -107,7 +107,7 @@ export function ThreePaths() {
                           >
                             <Icon className="h-5 w-5" />
                           </span>
-                          <span className="text-sm font-medium text-forest">
+                          <span className="text-sm font-medium text-ink">
                             {step.label}
                           </span>
                           {stepIndex < path.steps.length - 1 ? (

@@ -42,7 +42,7 @@ export function Empathy() {
           </MotionItem>
 
           <MotionItem>
-            <p className="font-serif text-xl leading-relaxed text-forest sm:text-2xl lg:text-[1.75rem]">
+            <p className="font-sans text-xl font-semibold leading-relaxed text-ink sm:text-2xl lg:text-[1.75rem]">
               Has probado cremas, tratamientos y consejos. Has ocultado manchas,
               brotes o enrojecimiento. Has gastado tiempo y dinero esperando
               resultados que no duran.

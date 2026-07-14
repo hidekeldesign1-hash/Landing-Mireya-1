@@ -25,31 +25,31 @@ export function Systems() {
 
         <MotionSection
           stagger
-          className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-3 lg:gap-10"
+          className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-12"
         >
           {systems.map((system) => (
-            <MotionItem key={system.id}>
-              <article className="group flex flex-col items-center text-center">
+            <MotionItem key={system.id} className="min-w-0">
+              <article className="group flex h-full flex-col items-center px-1 text-center">
                 <motion.div
                   whileHover={reduceMotion ? undefined : { scale: 1.04 }}
                   transition={{ duration: 0.25 }}
-                  className="relative mb-5 h-32 w-32 overflow-hidden rounded-full border-4 border-cream shadow-md sm:h-40 sm:w-40"
+                  className="relative mb-5 h-28 w-28 overflow-hidden rounded-full border-4 border-cream shadow-md sm:h-36 sm:w-36"
                 >
                   <Image
                     src={system.image}
                     alt={system.name}
                     fill
-                    sizes="160px"
+                    sizes="144px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
-                <h3 className="font-serif text-lg text-forest sm:text-xl">
+                <h3 className="font-sans text-base font-bold leading-snug tracking-tight text-ink sm:text-lg">
                   {system.name}
                 </h3>
                 <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-muted">
                   {system.description}
                 </p>
-                <p className="mt-3 text-[11px] uppercase tracking-[0.15em] text-gold-dark">
+                <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-forest sm:text-[11px]">
                   Tópicos · Apoyo sistémico · Guía · Objetivo
                 </p>
               </article>

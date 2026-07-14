@@ -47,9 +47,12 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between gap-4 lg:h-20">
         <Link
           href="#inicio"
-          className="font-serif text-lg tracking-wide text-forest sm:text-xl"
+          className="flex items-center gap-2 font-sans text-ink"
         >
-          DM <span className="font-sans text-xs font-medium tracking-[0.25em]">CEUTICALS</span>
+          <span className="inline-flex h-8 w-8 items-center justify-center bg-forest text-xs font-bold tracking-wide text-white">
+            DM
+          </span>
+          <span className="text-sm font-semibold tracking-[0.18em]">CEUTICALS</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
@@ -57,7 +60,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm tracking-wide text-muted transition-colors hover:text-forest"
+              className="text-xs font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-forest"
             >
               {link.label}
             </Link>
@@ -67,12 +70,12 @@ export function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             href={links.shopify}
-            className="rounded-full p-2 text-forest transition-colors hover:bg-beige"
+            className="p-2 text-ink transition-colors hover:bg-beige hover:text-forest"
             aria-label="Ir a la tienda"
           >
             <CartIcon className="h-5 w-5" />
           </Link>
-          <Button href={links.startNow} className="px-5 py-2.5 text-xs uppercase tracking-[0.15em]">
+          <Button href={links.startNow} className="px-5 py-2.5">
             Empezar ahora
           </Button>
         </div>
@@ -103,7 +106,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-base text-forest"
+                  className="text-sm font-medium uppercase tracking-[0.14em] text-ink"
                 >
                   {link.label}
                 </Link>

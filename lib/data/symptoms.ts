@@ -10,6 +10,27 @@ export type Symptom = {
   testimonials: { name: string; quote: string; avatar: string }[];
 };
 
+const sharedTestimonials = [
+  {
+    name: "Laura M.",
+    quote: "Por fin entendí que mi piel no era el problema.",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Ana R.",
+    quote: "Dejé de esconderme detrás del maquillaje.",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+  },
+  {
+    name: "Sofía P.",
+    quote: "Recuperé la confianza en mi propio rostro.",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
+  },
+];
+
 export const symptoms: Symptom[] = [
   {
     id: "acne",
@@ -18,72 +39,16 @@ export const symptoms: Symptom[] = [
     image:
       "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop",
     whatIs:
-      "El acné es una respuesta inflamatoria de la piel que puede estar vinculada a desequilibrios internos, estrés, microbiota o factores hormonales — no solo a una limpieza insuficiente.",
+      "El acné es una respuesta inflamatoria que puede vincularse a desequilibrios internos, estrés, microbiota o factores hormonales.",
     emotionalImpact:
-      "Mirarte al espejo y ver un brote nuevo puede generar vergüenza, ansiedad social y la sensación de que nada funciona, por más que lo intentes.",
+      "Ver un brote nuevo puede generar vergüenza, ansiedad social y la sensación de que nada funciona.",
     superficialRisk:
-      "Tratar solo la superficie puede resecar, sensibilizar y cicatrizar la piel sin resolver la causa que sigue enviando el mensaje.",
+      "Tratar solo la superficie puede resecar y sensibilizar sin resolver la causa que sigue enviando el mensaje.",
     products: [
       { name: "Sérum calmante", description: "Apoyo tópico para piel inflamada." },
-      { name: "Apoyo sistémico", description: "Acompañamiento desde adentro hacia afuera." },
+      { name: "Apoyo sistémico", description: "Acompañamiento de adentro hacia afuera." },
     ],
-    testimonials: [
-      {
-        name: "Laura M.",
-        quote: "Por fin entendí que mi piel no era el problema.",
-        avatar:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Ana R.",
-        quote: "Dejé de esconderme detrás del maquillaje.",
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Sofía P.",
-        quote: "Recuperé la confianza en mi propio rostro.",
-        avatar:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
-      },
-    ],
-  },
-  {
-    id: "melasma",
-    name: "Melasma",
-    shortDescription: "Manchas que persisten pese a cremas y protectores.",
-    image:
-      "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
-    whatIs:
-      "El melasma es una hiperpigmentación compleja, a menudo influida por hormonas, inflamación y exposición solar acumulada.",
-    emotionalImpact:
-      "Las manchas pueden hacer que sientas que tu rostro ya no te representa, afectando cómo te presentas ante el mundo.",
-    superficialRisk:
-      "Blanqueadores agresivos pueden irritar y, al suspenderse, devolver las manchas con más intensidad.",
-    products: [
-      { name: "Protocolo pigmentario", description: "Cuidado tópico respetuoso." },
-      { name: "Apoyo hormonal-piel", description: "Visión integral del desequilibrio." },
-    ],
-    testimonials: [
-      {
-        name: "María G.",
-        quote: "Mis manchas dejaron de definir cómo me veo.",
-        avatar:
-          "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Elena V.",
-        quote: "Aprendí a acompañar mi piel, no a pelear con ella.",
-        avatar:
-          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Carla N.",
-        quote: "El cambio fue gradual y real.",
-        avatar:
-          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop",
-      },
-    ],
+    testimonials: sharedTestimonials,
   },
   {
     id: "rosacea",
@@ -92,182 +57,177 @@ export const symptoms: Symptom[] = [
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=400&fit=crop",
     whatIs:
-      "La rosácea es una condición inflamatoria vascular que puede relacionarse con el sistema nervioso, la barrera cutánea y factores internos.",
+      "La rosácea es una condición inflamatoria vascular relacionada con barrera cutánea, sistema nervioso y factores internos.",
     emotionalImpact:
-      "El enrojecimiento impredecible puede generar inseguridad y la necesidad constante de ocultar el rostro.",
+      "El enrojecimiento impredecible puede generar inseguridad y la necesidad de ocultar el rostro.",
     superficialRisk:
       "Productos agresivos o exfoliaciones intensas suelen empeorar la inflamación y la sensibilidad.",
     products: [
       { name: "Barrera reparadora", description: "Calma y protege la piel reactiva." },
       { name: "Apoyo estrés–piel", description: "Aborda el eje inflamatorio interno." },
     ],
-    testimonials: [
-      {
-        name: "Patricia L.",
-        quote: "Mi rostro dejó de arder cada mañana.",
-        avatar:
-          "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Diana S.",
-        quote: "Por fin una rutina que no me irrita.",
-        avatar:
-          "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Irene C.",
-        quote: "Me siento cómoda sin maquillaje.",
-        avatar:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&h=100&fit=crop",
-      },
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "melasma",
+    name: "Melasma",
+    shortDescription: "Manchas hormonales que persisten pese a cremas.",
+    image:
+      "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
+    whatIs:
+      "El melasma es una hiperpigmentación compleja, a menudo influida por hormonas, inflamación y sol acumulado.",
+    emotionalImpact:
+      "Las manchas pueden hacer que sientas que tu rostro ya no te representa.",
+    superficialRisk:
+      "Blanqueadores agresivos pueden irritar y, al suspenderse, intensificar las manchas.",
+    products: [
+      { name: "Protocolo pigmentario", description: "Cuidado tópico respetuoso." },
+      { name: "Apoyo hormonal", description: "Visión integral del desequilibrio." },
     ],
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "manchas",
+    name: "Manchas",
+    shortDescription: "Pigmentación irregular que resta uniformidad al rostro.",
+    image:
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop",
+    whatIs:
+      "Las manchas reflejan un desequilibrio pigmentario por sol, inflamación, edad o residuales de brotes previos.",
+    emotionalImpact:
+      "La falta de uniformidad puede afectar cómo te ves y cómo te presentas ante los demás.",
+    superficialRisk:
+      "Tratamientos intensivos sin protección pueden sensibilizar sin resultados sostenibles.",
+    products: [
+      { name: "Uniformidad suave", description: "Aclara con respeto a la barrera." },
+      { name: "Antioxidantes", description: "Apoyo frente al estrés oxidativo." },
+    ],
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "piel-sensible",
+    name: "Piel Sensible",
+    shortDescription: "Ardor, tirantez y reacción ante casi cualquier producto.",
+    image:
+      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+    whatIs:
+      "La piel sensible refleja una barrera comprometida y una respuesta inflamatoria exagerada a estímulos cotidianos.",
+    emotionalImpact:
+      "Vivir con incomodidad constante genera miedo a probar rutinas y frustración al cuidado diario.",
+    superficialRisk:
+      "Productos “activos” o perfumados pueden debilitar aún más la barrera cutánea.",
+    products: [
+      { name: "Reparación de barrera", description: "Calma y sella la piel reactiva." },
+      { name: "Rutina mínima", description: "Menos irritantes, más tolerancia." },
+    ],
+    testimonials: sharedTestimonials,
   },
   {
     id: "fotoenvejecimiento",
     name: "Fotoenvejecimiento",
-    shortDescription: "Daño solar visible: textura, manchas y pérdida de firmeza.",
+    shortDescription: "Daño solar: textura, manchas y pérdida de firmeza.",
     image:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop",
     whatIs:
       "El fotoenvejecimiento es el resultado acumulado de la exposición UV sobre colágeno, elastina y pigmentación.",
     emotionalImpact:
       "Ver el paso del sol en tu piel puede hacerte sentir que el tiempo se aceleró sin que pudieras evitarlo.",
     superficialRisk:
-      "Tratamientos intensivos sin protección y sin apoyo interno pueden sensibilizar sin resultados sostenibles.",
+      "Tratamientos agresivos sin protección y sin apoyo interno sensibilizan sin resultados duraderos.",
     products: [
       { name: "Renovación suave", description: "Textura y luminosidad sin agredir." },
-      { name: "Antioxidantes", description: "Apoyo frente al estrés oxidativo." },
+      { name: "Protección diaria", description: "Base indispensable del protocolo." },
     ],
-    testimonials: [
-      {
-        name: "Rosa M.",
-        quote: "Mi piel se ve más uniforme y descansada.",
-        avatar:
-          "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Lucía T.",
-        quote: "Recuperé luminosidad sin procedimientos agresivos.",
-        avatar:
-          "https://images.unsplash.com/photo-1548142813-c348350df52b?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Valeria H.",
-        quote: "Entendí que proteger también es cuidar.",
-        avatar:
-          "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=100&h=100&fit=crop",
-      },
-    ],
-  },
-  {
-    id: "envejecimiento",
-    name: "Envejecimiento",
-    shortDescription: "Pérdida de firmeza, sequedad y vitalidad.",
-    image:
-      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop",
-    whatIs:
-      "El envejecimiento cutáneo es un proceso natural influido por inflamación, hormonas, estrés oxidativo y hábitos de vida.",
-    emotionalImpact:
-      "Puede generar la sensación de no reconocerse, o de que el cuidado ya no alcanza para sentirse bien.",
-    superficialRisk:
-      "Promesas anti-edad agresivas pueden dañar la barrera sin acompañar lo que ocurre por dentro.",
-    products: [
-      { name: "Nutrición profunda", description: "Hidratación y soporte de barrera." },
-      { name: "Sistema integral", description: "Visión completa del envejecimiento." },
-    ],
-    testimonials: [
-      {
-        name: "Beatriz A.",
-        quote: "Me siento más yo, no más joven a la fuerza.",
-        avatar:
-          "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Gloria F.",
-        quote: "Mi piel se siente nutrida y calmada.",
-        avatar:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Natalia D.",
-        quote: "El enfoque integral marcó la diferencia.",
-        avatar:
-          "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&h=100&fit=crop",
-      },
-    ],
+    testimonials: sharedTestimonials,
   },
   {
     id: "piel-grasa",
-    name: "Piel grasa",
+    name: "Piel Grasa",
     shortDescription: "Brillo, poros y desequilibrio que no se controla.",
     image:
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
     whatIs:
-      "La piel grasa refleja un desequilibrio en la producción de sebo, a menudo ligado a hormonas, inflamación o una barrera alterada.",
+      "La piel grasa refleja un desequilibrio en la producción de sebo, a menudo ligado a hormonas o barrera alterada.",
     emotionalImpact:
-      "El brillo constante y los poros visibles pueden hacerte sentir descuidada aunque inviertas tiempo en tu rutina.",
+      "El brillo constante puede hacerte sentir descuidada aunque inviertas tiempo en tu rutina.",
     superficialRisk:
-      "Productos matificantes agresivos pueden resecar y provocar más sebo como respuesta compensatoria.",
+      "Productos matificantes agresivos pueden resecar y provocar más sebo como compensación.",
     products: [
       { name: "Equilibrio seborreico", description: "Regula sin resecar." },
-      { name: "Apoyo metabólico–piel", description: "Aborda el desequilibrio interno." },
+      { name: "Apoyo metabólico", description: "Aborda el desequilibrio interno." },
     ],
-    testimonials: [
-      {
-        name: "Camila J.",
-        quote: "Mi piel dejó de brillar a media mañana.",
-        avatar:
-          "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Andrea B.",
-        quote: "Por fin una rutina que equilibra de verdad.",
-        avatar:
-          "https://images.unsplash.com/photo-1521146764736-56c929d59c83?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Mónica R.",
-        quote: "Menos productos, mejores resultados.",
-        avatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
-      },
-    ],
+    testimonials: sharedTestimonials,
   },
   {
-    id: "eczema",
-    name: "Eczema / Dermatitis",
-    shortDescription: "Picor, sequedad y brotes que interrumpen tu día.",
+    id: "piel-seca",
+    name: "Piel Seca",
+    shortDescription: "Tirantez, descamación y falta de confort diario.",
     image:
-      "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop&sat=-20",
     whatIs:
-      "El eczema y la dermatitis reflejan una barrera cutánea comprometida y una respuesta inflamatoria que puede tener raíces internas.",
+      "La piel seca indica déficit de lípidos y agua en la barrera, a menudo agravado por clima, hábitos o inflamación.",
     emotionalImpact:
-      "El picor y la incomodidad constantes afectan el sueño, el ánimo y la relación con tu propio cuerpo.",
+      "La incomodidad constante y el aspecto apagado afectan bienestar y confianza.",
     superficialRisk:
-      "Corticoides o productos irritantes a largo plazo pueden debilitar aún más la barrera cutánea.",
+      "Limpiadores fuertes o ácidos sin nutrición pueden agravar la sequedad.",
     products: [
-      { name: "Reparación de barrera", description: "Calma y sella la piel sensible." },
-      { name: "Apoyo inflamación–piel", description: "Reduce la carga inflamatoria." },
+      { name: "Nutrición profunda", description: "Restaura lípidos y confort." },
+      { name: "Hidratación sostenida", description: "Sella y retiene humedad." },
     ],
-    testimonials: [
-      {
-        name: "Paula K.",
-        quote: "Por primera vez dormí sin rascarme.",
-        avatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Jimena O.",
-        quote: "Mi piel se siente protegida, no atacada.",
-        avatar:
-          "https://images.unsplash.com/photo-1524638431109-93d95c968f03?w=100&h=100&fit=crop",
-      },
-      {
-        name: "Teresa W.",
-        quote: "Entendí el mensaje detrás del picor.",
-        avatar:
-          "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop",
-      },
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "poros",
+    name: "Poros",
+    shortDescription: "Poros dilatados y textura irregular visibles de cerca.",
+    image:
+      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=400&fit=crop&sat=-10",
+    whatIs:
+      "Los poros dilatados suelen relacionarse con exceso de sebo, pérdida de firmeza y acumulación de residuos.",
+    emotionalImpact:
+      "La textura irregular puede generar la sensación de que la piel “nunca se ve limpia”.",
+    superficialRisk:
+      "Extracciones agresivas o ácidos mal dosificados pueden ensanchar e irritar más.",
+    products: [
+      { name: "Refinamiento suave", description: "Mejora textura sin resecar." },
+      { name: "Equilibrio sebáceo", description: "Menos obstrucción, mejor aspecto." },
     ],
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "ojeras",
+    name: "Ojeras",
+    shortDescription: "Oscuridad, hinchazón o cansancio bajo los ojos.",
+    image:
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop&bri=-10",
+    whatIs:
+      "Las ojeras pueden deberse a vascularización, pigmento, falta de sueño, estrés o adelgazamiento cutáneo.",
+    emotionalImpact:
+      "Transmitir cansancio constante puede afectar cómo te percibes y cómo te perciben.",
+    superficialRisk:
+      "Correctores o activos potentes en el contorno pueden irritar sin tratar la causa.",
+    products: [
+      { name: "Contorno calmante", description: "Descongestiona y suaviza." },
+      { name: "Apoyo integral", description: "Descanso, circulación y nutrición." },
+    ],
+    testimonials: sharedTestimonials,
+  },
+  {
+    id: "caida-cabello",
+    name: "Caída de Cabello",
+    shortDescription: "Pérdida de densidad y fuerza del cabello.",
+    image:
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+    whatIs:
+      "La caída puede vincularse a estrés, hormonas, nutrición, inflamación o ciclos de recuperación alterados.",
+    emotionalImpact:
+      "Perder cabello impacta la identidad y la confianza de forma muy personal.",
+    superficialRisk:
+      "Tratamientos agresivos o prometedores sin enfoque integral pueden frustrar sin resultados reales.",
+    products: [
+      { name: "Fortalecimiento capilar", description: "Apoyo tópico del cuero cabelludo." },
+      { name: "Apoyo sistémico", description: "Nutrición y equilibrio interno." },
+    ],
+    testimonials: sharedTestimonials,
   },
 ];

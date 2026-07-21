@@ -84,12 +84,13 @@ export function Hero() {
         >
           <div className="hero-image-mask absolute inset-0">
             <Image
-              src="/images/hero-restore.png"
-              alt="Pareja con piel saludable en un entorno científico DM Ceuticals"
+              src="/images/hero-hq.jpg"
+              alt="Mujer observando su piel frente al espejo"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-[82%_center] sm:object-[75%_center] lg:object-[75%_center]"
+              quality={95}
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover object-[78%_center] sm:object-[72%_center] lg:object-[70%_center]"
             />
           </div>
 

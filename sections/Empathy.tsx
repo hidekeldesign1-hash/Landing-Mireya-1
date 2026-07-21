@@ -1,16 +1,7 @@
 "use client";
 
-import { BottleIcon, ClockIcon, FaceIcon, MoneyIcon } from "@/components/icons/LineIcons";
 import { Container } from "@/components/ui/Container";
-import { IconCircle } from "@/components/ui/IconCircle";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
-
-const painPoints = [
-  { icon: BottleIcon, label: "Cremas y tratamientos" },
-  { icon: FaceIcon, label: "Ocultar manchas o brotes" },
-  { icon: MoneyIcon, label: "Tiempo y dinero" },
-  { icon: ClockIcon, label: "Resultados que no duran" },
-];
 
 export function Empathy() {
   return (
@@ -26,21 +17,6 @@ export function Empathy() {
 
       <Container>
         <MotionSection stagger className="mx-auto max-w-4xl text-center">
-          <MotionItem>
-            <div className="mb-10 flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-              {painPoints.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-3">
-                  <IconCircle>
-                    <Icon className="h-6 w-6 text-gold" />
-                  </IconCircle>
-                  <span className="max-w-[7.5rem] text-xs tracking-wide text-muted">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </MotionItem>
-
           <MotionItem>
             <p className="font-sans text-xl font-semibold leading-relaxed text-ink sm:text-2xl lg:text-[1.75rem]">
               Has probado cremas, tratamientos y consejos. Has ocultado manchas,

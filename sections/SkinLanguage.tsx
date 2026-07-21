@@ -26,11 +26,14 @@ export function SkinLanguage() {
         </MotionSection>
 
         <MotionSection stagger className="mt-12">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-8">
             {symptoms.map((symptom) => {
               const active = symptom.id === selectedId;
               return (
-                <MotionItem key={symptom.id} className="min-w-0">
+                <MotionItem
+                  key={symptom.id}
+                  className="min-w-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] xl:w-[calc(16.666%-0.875rem)]"
+                >
                   <button
                     type="button"
                     onClick={() => setSelectedId(symptom.id)}
@@ -42,10 +45,11 @@ export function SkinLanguage() {
                   >
                     <div
                       className={cn(
-                        "hexagon relative mb-3 aspect-square w-full max-w-[100px] overflow-hidden bg-beige transition-shadow duration-300 sm:max-w-[110px]",
+                        "relative mb-4 aspect-square w-full max-w-[100px] overflow-hidden rounded-full bg-beige transition-[box-shadow,transform,opacity] duration-300 sm:max-w-[110px]",
+                        "shadow-[0_10px_28px_-8px_rgba(26,42,58,0.28),0_4px_10px_-4px_rgba(0,163,166,0.18)]",
                         active
-                          ? "ring-2 ring-forest ring-offset-2 ring-offset-cream shadow-lg"
-                          : "opacity-90 group-hover:opacity-100",
+                          ? "ring-2 ring-forest ring-offset-2 ring-offset-cream shadow-[0_14px_36px_-8px_rgba(0,163,166,0.35),0_6px_14px_-4px_rgba(26,42,58,0.2)]"
+                          : "opacity-95 group-hover:opacity-100 group-hover:shadow-[0_16px_40px_-10px_rgba(26,42,58,0.32),0_6px_14px_-4px_rgba(0,163,166,0.22)]",
                       )}
                     >
                       <Image
@@ -59,9 +63,6 @@ export function SkinLanguage() {
                     <h3 className="w-full break-words font-sans text-[11px] font-semibold uppercase leading-tight tracking-wide text-ink sm:text-xs lg:text-[13px]">
                       {symptom.name}
                     </h3>
-                    <p className="mt-1.5 line-clamp-2 w-full text-[10px] leading-snug text-muted sm:text-[11px]">
-                      {symptom.shortDescription}
-                    </p>
                     <span
                       className={cn(
                         "mt-2.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors",
@@ -165,7 +166,7 @@ export function SkinLanguage() {
                         </li>
                       ))}
                     </ul>
-                    <Button href={links.products} className="mt-5 w-full">
+                    <Button href={selected.productsUrl} className="mt-5 w-full">
                       Ver productos recomendados
                     </Button>
                   </div>

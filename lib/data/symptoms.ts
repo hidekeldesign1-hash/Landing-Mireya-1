@@ -6,6 +6,7 @@ export type Symptom = {
   whatIs: string;
   emotionalImpact: string;
   superficialRisk: string;
+  productsUrl: string;
   products: { name: string; description: string }[];
   testimonials: { name: string; quote: string; avatar: string }[];
 };
@@ -35,6 +36,7 @@ export const symptoms: Symptom[] = [
   {
     id: "acne",
     name: "Acné",
+    productsUrl: "https://dmceuticals.com/pages/acne#tratamiento-sugerido",
     shortDescription: "Brotes, inflamación y marcas que no terminan de irse.",
     image:
       "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=400&fit=crop",
@@ -53,6 +55,7 @@ export const symptoms: Symptom[] = [
   {
     id: "rosacea",
     name: "Rosácea",
+    productsUrl: "https://dmceuticals.com/pages/rosacea#tratamiento-sugerido",
     shortDescription: "Enrojecimiento, calor y sensibilidad constante.",
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=400&fit=crop",
@@ -71,6 +74,7 @@ export const symptoms: Symptom[] = [
   {
     id: "melasma",
     name: "Melasma",
+    productsUrl: "https://dmceuticals.com/pages/melasma#tratamiento-sugerido",
     shortDescription: "Manchas hormonales que persisten pese a cremas.",
     image:
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
@@ -89,6 +93,7 @@ export const symptoms: Symptom[] = [
   {
     id: "manchas",
     name: "Manchas",
+    productsUrl: "https://dmceuticals.com/pages/manchas#tratamiento-sugerido",
     shortDescription: "Pigmentación irregular que resta uniformidad al rostro.",
     image:
       "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop",
@@ -107,6 +112,7 @@ export const symptoms: Symptom[] = [
   {
     id: "piel-sensible",
     name: "Piel Sensible",
+    productsUrl: "https://dmceuticals.com/pages/piel-sensible#tratamiento-sugerido",
     shortDescription: "Ardor, tirantez y reacción ante casi cualquier producto.",
     image:
       "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
@@ -125,6 +131,7 @@ export const symptoms: Symptom[] = [
   {
     id: "fotoenvejecimiento",
     name: "Fotoenvejecimiento",
+    productsUrl: "https://dmceuticals.com/pages/fotoenvejecimiento#tratamiento-sugerido",
     shortDescription: "Daño solar: textura, manchas y pérdida de firmeza.",
     image:
       "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop",
@@ -143,6 +150,7 @@ export const symptoms: Symptom[] = [
   {
     id: "piel-grasa",
     name: "Piel Grasa",
+    productsUrl: "https://dmceuticals.com/pages/piel-grasa#tratamiento-sugerido",
     shortDescription: "Brillo, poros y desequilibrio que no se controla.",
     image:
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
@@ -161,6 +169,7 @@ export const symptoms: Symptom[] = [
   {
     id: "piel-seca",
     name: "Piel Seca",
+    productsUrl: "https://dmceuticals.com/pages/piel-seca#tratamiento-sugerido",
     shortDescription: "Tirantez, descamación y falta de confort diario.",
     image:
       "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop&sat=-20",
@@ -179,6 +188,7 @@ export const symptoms: Symptom[] = [
   {
     id: "poros",
     name: "Poros",
+    productsUrl: "https://dmceuticals.com/pages/poros#tratamiento-sugerido",
     shortDescription: "Poros dilatados y textura irregular visibles de cerca.",
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&h=400&fit=crop&sat=-10",
@@ -197,6 +207,7 @@ export const symptoms: Symptom[] = [
   {
     id: "ojeras",
     name: "Ojeras",
+    productsUrl: "https://dmceuticals.com/pages/ojeras#tratamiento-sugerido",
     shortDescription: "Oscuridad, hinchazón o cansancio bajo los ojos.",
     image:
       "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&h=400&fit=crop&bri=-10",
@@ -215,6 +226,7 @@ export const symptoms: Symptom[] = [
   {
     id: "caida-cabello",
     name: "Caída de Cabello",
+    productsUrl: "https://dmceuticals.com/pages/caida-del-cabello#tratamiento-sugerido",
     shortDescription: "Pérdida de densidad y fuerza del cabello.",
     image:
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",

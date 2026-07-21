@@ -19,7 +19,7 @@ export const paths: JourneyPath[] = [
     id: "camino-1",
     title: "Quiero empezar hoy",
     description:
-      "Elige productos sugeridos y comienza tu cuidado desde ahora, sin esperar.",
+      "Elige productos sugeridos y comienza tu cuidado desde ahora.",
     steps: [
       { label: "Productos sugeridos" },
       { label: "Shopify" },
@@ -31,28 +31,41 @@ export const paths: JourneyPath[] = [
   },
   {
     id: "camino-2",
-    title: "Quiero entender qué me está pasando",
+    title: "Quiero entenderlo",
     description:
-      "Realiza la Evaluación Lenguaje de la Piel™ y recibe sistemas sugeridos.",
+      "Haz la Evaluación Lenguaje de la Piel™ y recibe protocolos.",
     steps: [
       { label: "Evaluación" },
       { label: "Resultado" },
-      { label: "Sistemas" },
-      { label: "Compra o consulta" },
+      { label: "Protocolos" },
     ],
     cta: "Realizar evaluación",
-    href: links.evaluation,
+    href: links.restore360,
     accent: "lavender",
   },
   {
     id: "camino-3",
-    title: "Quiero acompañamiento personalizado",
+    title: "Quiero Restore 360",
     description:
-      "Agenda una consulta con Mireya Díaz y recibe un plan individualizado.",
+      "Descubre desde adentro qué influye en tu piel y recibe productos.",
+    steps: [
+      { label: "Quiz Restore 360" },
+      { label: "Resultado" },
+      { label: "Productos sugeridos" },
+    ],
+    cta: "Hacer Restore 360",
+    href: links.reset360,
+    accent: "green",
+  },
+  {
+    id: "camino-4",
+    title: "Quiero una consulta",
+    description:
+      "Agenda con Mireya Díaz y recibe un plan individualizado.",
     steps: [
       { label: "Agenda consulta" },
       { label: "Consulta Mireya" },
-      { label: "Plan individualizado" },
+      { label: "Plan personalizado" },
     ],
     cta: "Agendar consulta",
     href: links.consultation,

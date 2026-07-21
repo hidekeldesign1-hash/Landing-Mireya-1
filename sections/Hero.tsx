@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon, LeafIcon } from "@/components/icons/LineIcons";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { links } from "@/lib/data/links";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -57,14 +58,14 @@ export function Hero() {
               className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:flex-nowrap"
             >
               <Button
-                href="#camino-1"
+                href={links.restore360}
                 className="shrink-0 px-5 py-2.5 whitespace-nowrap"
               >
                 Quiero empezar hoy
                 <ArrowRightIcon className="h-4 w-4" />
               </Button>
               <Button
-                href="#camino-2"
+                href={links.reset360}
                 variant="outline"
                 className="shrink-0 px-5 py-2.5 whitespace-nowrap"
               >
@@ -83,12 +84,12 @@ export function Hero() {
         >
           <div className="hero-image-mask absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&h=1400&fit=crop"
-              alt="Mujer sonriendo frente al espejo, recuperando confianza y bienestar"
+              src="/images/hero-restore.png"
+              alt="Pareja con piel saludable en un entorno científico DM Ceuticals"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-[center_18%]"
+              className="object-cover object-[82%_center] sm:object-[75%_center] lg:object-[75%_center]"
             />
           </div>
 

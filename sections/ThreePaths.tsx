@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRightIcon,
+  BookIcon,
   BottleIcon,
   CalendarIcon,
   CartIcon,
@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { staggerContainer, staggerItem } from "@/lib/animations";
 import { paths, type JourneyPath } from "@/lib/data/paths";
 import { cn } from "@/lib/utils";
 
@@ -41,11 +40,9 @@ const accentStyles: Record<
   },
 };
 
-const stepIcons = [BottleIcon, ClipboardIcon, CartIcon, CalendarIcon, UserIcon];
+const stepIcons = [BottleIcon, ClipboardIcon, BookIcon, CartIcon, CalendarIcon, UserIcon];
 
 export function ThreePaths() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section id="caminos" className="bg-cream py-16 sm:py-20 lg:py-24">
       <Container>
@@ -53,11 +50,11 @@ export function ThreePaths() {
           <SectionHeading
             eyebrow="Tu camino"
             title="Elige cómo quieres empezar"
-            subtitle="Tres rutas claras según lo que necesitas hoy. Ninguna es incorrecta; todas te acercan a comprender y cuidar tu piel."
+            subtitle="Cuatro rutas claras según lo que necesitas hoy. Ninguna es incorrecta; todas te acercan a comprender y cuidar tu piel."
           />
         </MotionSection>
 
-        <MotionSection stagger className="mt-12 grid gap-6 lg:grid-cols-3">
+        <MotionSection stagger className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {paths.map((path, index) => {
             const styles = accentStyles[path.accent];
             return (
@@ -65,66 +62,59 @@ export function ThreePaths() {
                 <article
                   id={path.id}
                   className={cn(
-                    "flex h-full scroll-mt-28 flex-col rounded-[1.75rem] border p-6 sm:p-8",
+                    "flex h-full scroll-mt-28 flex-col rounded-2xl border p-5",
                     styles.card,
                   )}
                 >
                   <span
                     className={cn(
-                      "inline-flex w-fit rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em]",
+                      "inline-flex w-fit rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em]",
                       styles.badge,
                     )}
                   >
                     Camino {index + 1}
                   </span>
-                  <h3 className="mt-4 font-sans text-2xl font-bold leading-snug tracking-tight text-ink">
+                  <h3 className="mt-3 min-h-[1.75rem] whitespace-nowrap font-sans text-base font-bold leading-none tracking-tight text-ink sm:text-lg">
                     {path.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                  <p className="mt-2 min-h-[2.5rem] text-sm leading-snug text-muted">
                     {path.description}
                   </p>
 
-                  <motion.ol
-                    className="mt-8 flex flex-1 flex-col gap-3"
-                    initial={reduceMotion ? false : "hidden"}
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={reduceMotion ? undefined : staggerContainer}
-                  >
+                  <ol className="mt-5 flex flex-1 flex-col gap-2">
                     {path.steps.map((step, stepIndex) => {
                       const Icon = stepIcons[stepIndex % stepIcons.length];
                       return (
-                        <motion.li
-                          key={step.label}
-                          variants={reduceMotion ? undefined : staggerItem}
-                          className="flex items-center gap-3"
+                        <li
+                          key={`${path.id}-${step.label}`}
+                          className="flex items-center gap-2.5"
                         >
                           <span
                             className={cn(
-                              "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+                              "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
                               styles.iconBg,
                             )}
                           >
-                            <Icon className="h-5 w-5" />
+                            <Icon className="h-4 w-4" />
                           </span>
-                          <span className="text-sm font-medium text-ink">
+                          <span className="text-xs font-medium text-ink sm:text-sm">
                             {step.label}
                           </span>
                           {stepIndex < path.steps.length - 1 ? (
-                            <ArrowRightIcon className="ml-auto h-4 w-4 text-muted-light" />
+                            <ArrowRightIcon className="ml-auto h-3.5 w-3.5 text-muted-light" />
                           ) : null}
-                        </motion.li>
+                        </li>
                       );
                     })}
-                  </motion.ol>
+                  </ol>
 
                   <Button
                     href={path.href}
                     variant={styles.button}
-                    className="mt-8 w-full"
+                    className="mt-5 w-full px-4 py-2.5 text-[10px]"
                   >
                     {path.cta}
-                    <ArrowRightIcon className="h-4 w-4" />
+                    <ArrowRightIcon className="h-3.5 w-3.5" />
                   </Button>
                 </article>
               </MotionItem>

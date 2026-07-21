@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRightIcon, CheckIcon } from "@/components/icons/LineIcons";
@@ -13,10 +13,28 @@ import { links } from "@/lib/data/links";
 import { symptoms } from "@/lib/data/symptoms";
 import { cn } from "@/lib/utils";
 
+const MOBILE_MAX_WIDTH = 768;
+
 export function SkinLanguage() {
   const [selectedId, setSelectedId] = useState(symptoms[0].id);
   const selected = symptoms.find((s) => s.id === selectedId) ?? symptoms[0];
   const reduceMotion = useReducedMotion();
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  function selectSymptom(id: string) {
+    setSelectedId(id);
+
+    if (typeof window === "undefined") return;
+    const isMobile = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`).matches;
+    if (!isMobile) return;
+
+    window.requestAnimationFrame(() => {
+      detailRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  }
 
   return (
     <section id="sintomas" className="bg-cream py-16 sm:py-20 lg:py-24">
@@ -36,7 +54,7 @@ export function SkinLanguage() {
                 >
                   <button
                     type="button"
-                    onClick={() => setSelectedId(symptom.id)}
+                    onClick={() => selectSymptom(symptom.id)}
                     className={cn(
                       "group flex w-full min-w-0 flex-col items-center px-1 text-center transition-transform duration-300",
                       active ? "scale-[1.02]" : "hover:scale-[1.02]",
@@ -81,8 +99,11 @@ export function SkinLanguage() {
           </div>
         </MotionSection>
 
-        <div className="mt-12 overflow-hidden rounded-[2rem] bg-beige p-6 sm:p-8 lg:p-10">
-          <AnimatePresence mode="wait">
+        <div
+          ref={detailRef}
+          id="sintoma-detalle"
+          className="mt-12 scroll-mt-24 overflow-hidden rounded-[2rem] bg-beige p-6 sm:p-8 lg:p-10"
+        >          <AnimatePresence mode="wait">
             <motion.div
               key={selected.id}
               initial={reduceMotion ? false : "initial"}

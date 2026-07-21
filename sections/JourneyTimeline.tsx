@@ -33,7 +33,6 @@ export function JourneyTimeline() {
         <MotionSection>
           <SectionHeading
             title="El camino hacia tu mejor versión"
-            subtitle="Un recorrido emocional, no solo un embudo de compra."
           />
         </MotionSection>
 

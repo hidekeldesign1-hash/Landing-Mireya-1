@@ -1,21 +1,47 @@
-import { BookIcon, HeartIcon, LeafIcon, SparkIcon } from "@/components/icons/LineIcons";
+import {
+  BookIcon,
+  HeartIcon,
+  InstagramIcon,
+  LeafIcon,
+  SparkIcon,
+  TikTokIcon,
+  WhatsAppIcon,
+} from "@/components/icons/LineIcons";
 import { Container } from "@/components/ui/Container";
 
 const pillars = [
   {
     icon: BookIcon,
     title: "Educamos",
-    text: "antes de vender",
+    text: "antes de usar",
   },
   {
     icon: SparkIcon,
     title: "Sugerimos",
-    text: "antes de presionar",
+    text: "antes de comprar",
   },
   {
     icon: HeartIcon,
     title: "Acompañamos",
     text: "antes de intervenir",
+  },
+];
+
+const socialLinks = [
+  {
+    href: "https://wa.me/5215561174386",
+    label: "WhatsApp",
+    icon: WhatsAppIcon,
+  },
+  {
+    href: "https://www.instagram.com/dmceuticals?utm_source=qr&igsh=dG54aG5xaTlsNnI4",
+    label: "Instagram",
+    icon: InstagramIcon,
+  },
+  {
+    href: "https://www.tiktok.com/@mireyadiazfe?_r=1&_t=ZS-97oz3RvW0Av",
+    label: "TikTok",
+    icon: TikTokIcon,
   },
 ];
 
@@ -56,14 +82,30 @@ export function Footer() {
           <p className="mt-4 max-w-xs font-sans text-lg font-semibold leading-snug text-forest-light">
             La piel no es el enemigo. Es el mensajero.
           </p>
+
+          <div className="mt-6 flex items-center justify-center gap-3">
+            {socialLinks.map(({ href, label, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-forest/50 text-forest transition-colors hover:bg-forest hover:text-white"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col justify-center lg:items-end lg:text-right">
           <p className="max-w-sm text-sm leading-relaxed text-white/75">
-            Educamos antes de vender, sugerimos antes de presionar y acompañamos
+            Educamos antes de usar, sugerimos antes de comprar y acompañamos
             antes de intervenir. Porque comprender tu piel es el primer paso
             hacia el bienestar.
           </p>
+
           <p className="mt-8 text-xs tracking-wide text-white/50">
             © {new Date().getFullYear()} DM Ceuticals. Todos los derechos
             reservados.

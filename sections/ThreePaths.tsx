@@ -23,7 +23,7 @@ export function ThreePaths() {
         <MotionSection className="px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
           <span className="mb-5 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
             <span aria-hidden>●</span>
-            03 / TU CAMINO
+            05 / TU CAMINO
           </span>
           <h2 className="max-w-4xl text-4xl font-black uppercase leading-none tracking-tighter text-black md:text-5xl lg:text-6xl">
             Elige cómo quieres empezar

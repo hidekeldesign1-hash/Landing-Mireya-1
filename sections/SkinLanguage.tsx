@@ -273,7 +273,7 @@ export function SkinLanguage() {
               </span>
               .
             </p>
-            <Button href={links.evaluation} variant="outline" className="mt-6">
+            <Button href={links.restore360} variant="outline" className="mt-6">
               Quiero profundizar
             </Button>
           </div>

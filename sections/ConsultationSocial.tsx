@@ -41,7 +41,7 @@ export function ConsultationSocial() {
           <MotionSection className="p-6 sm:p-8 lg:col-span-6 lg:p-10 xl:p-12">
             <span className="mb-5 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
               <span aria-hidden>●</span>
-              05 / CONSULTA MIREYA DÍAZ
+              06 / CONSULTA MIREYA DÍAZ
             </span>
             <h2 className="text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
               Acompañamiento profesional cuando quieres ir más profundo

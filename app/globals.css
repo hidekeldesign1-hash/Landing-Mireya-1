@@ -222,3 +222,23 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide iOS/Safari native ▶ overlay on splash background video */
+.splash-video {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.splash-video::-webkit-media-controls-start-playback-button,
+.splash-video::-webkit-media-controls-overlay-play-button,
+.splash-video::-webkit-media-controls,
+.splash-video::-webkit-media-controls-enclosure,
+.splash-video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+

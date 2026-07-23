@@ -30,6 +30,8 @@ function AutoplayVideoLoop({ src }: { src: string }) {
     el.setAttribute("playsinline", "true");
     el.setAttribute("webkit-playsinline", "true");
     el.setAttribute("x5-playsinline", "true");
+    el.setAttribute("x5-video-player-type", "h5");
+    el.setAttribute("x5-video-player-fullscreen", "false");
     const playPromise = el.play();
     if (playPromise && typeof playPromise.catch === "function") {
       playPromise.catch(() => {
@@ -107,11 +109,6 @@ function AutoplayVideoLoop({ src }: { src: string }) {
         controls={false}
         disablePictureInPicture
         disableRemotePlayback
-        // @ts-expect-error legacy iOS / Android WebView autoplay attrs
-        webkit-playsinline="true"
-        x5-playsinline="true"
-        x5-video-player-type="h5"
-        x5-video-player-fullscreen="false"
       />
     </div>
   );

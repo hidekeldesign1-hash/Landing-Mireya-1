@@ -10,98 +10,138 @@ type SplashScreenProps = {
 };
 
 /**
- * iPhone Safari blocks autoplay / shows a giant ▶ when a parent has CSS
- * transform/filter (Framer Motion). Keep the video in a plain fixed layer,
- * force muted+playsInline, and hide native media controls.
+ * Safari iOS paints a giant ▶ on <video> when autoplay is deferred.
+ * Fix: keep a real muted looping <video> for decoding, but draw frames to a
+ * full-screen <canvas> on top so the native play control is never visible.
  */
-function AutoplayVideoLoop({ src }: { src: string }) {
+function CanvasVideoLoop({ src }: { src: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const kick = useCallback(() => {
-    const el = videoRef.current;
-    if (!el) return;
+  const kickPlay = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-    el.defaultMuted = true;
-    el.muted = true;
-    el.volume = 0;
-    el.autoplay = true;
-    el.loop = true;
-    el.playsInline = true;
-    el.controls = false;
-    el.removeAttribute("controls");
-    el.setAttribute("muted", "");
-    el.setAttribute("autoplay", "");
-    el.setAttribute("loop", "");
-    el.setAttribute("playsinline", "");
-    el.setAttribute("webkit-playsinline", "true");
-    el.setAttribute("x5-playsinline", "true");
-    el.setAttribute("x5-video-player-type", "h5");
-    el.setAttribute("x5-video-player-fullscreen", "false");
-    el.setAttribute("controlslist", "nodownload nofullscreen noremoteplayback");
-    el.disablePictureInPicture = true;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.volume = 0;
+    video.autoplay = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.controls = false;
+    video.removeAttribute("controls");
+    video.setAttribute("muted", "");
+    video.setAttribute("autoplay", "");
+    video.setAttribute("loop", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "true");
+    video.setAttribute("x5-playsinline", "true");
 
-    const tryPlay = () => {
-      const p = el.play();
-      if (p && typeof p.catch === "function") p.catch(() => {});
-    };
-
-    tryPlay();
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
   }, []);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
 
-    kick();
+    const ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) return;
 
-    const onReady = () => kick();
-    const events = [
-      "loadedmetadata",
-      "loadeddata",
-      "canplay",
-      "canplaythrough",
-      "suspend",
-      "stalled",
-    ] as const;
-    events.forEach((evt) => el.addEventListener(evt, onReady));
+    let raf = 0;
+    let running = true;
+    let w = 0;
+    let h = 0;
+    let dpr = 1;
 
-    const delays = [0, 60, 200, 500, 1000, 2000, 4000].map((ms) =>
-      window.setTimeout(kick, ms),
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.max(1, Math.floor(w * dpr));
+      canvas.height = Math.max(1, Math.floor(h * dpr));
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const draw = () => {
+      if (!running) return;
+
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, w, h);
+
+      if (video.readyState >= 2 && video.videoWidth > 0) {
+        const vw = video.videoWidth;
+        const vh = video.videoHeight;
+        const scale = Math.max(w / vw, h / vh);
+        const dw = vw * scale;
+        const dh = vh * scale;
+        const dx = (w - dw) / 2;
+        const dy = (h - dh) / 2;
+        ctx.globalAlpha = 0.85;
+        ctx.drawImage(video, dx, dy, dw, dh);
+        ctx.globalAlpha = 1;
+      }
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    const onReady = () => kickPlay();
+    ["loadedmetadata", "loadeddata", "canplay", "canplaythrough"].forEach(
+      (evt) => video.addEventListener(evt, onReady),
     );
 
+    resize();
+    kickPlay();
+    raf = requestAnimationFrame(draw);
+
+    const delays = [0, 80, 250, 600, 1200, 2500].map((ms) =>
+      window.setTimeout(kickPlay, ms),
+    );
     const watchId = window.setInterval(() => {
-      if (el.paused) kick();
-    }, 500);
+      if (video.paused) kickPlay();
+    }, 700);
 
     const onVis = () => {
-      if (!document.hidden) kick();
+      if (!document.hidden) kickPlay();
     };
+    const onResize = () => resize();
+
+    window.addEventListener("resize", onResize, { passive: true });
     document.addEventListener("visibilitychange", onVis);
     window.addEventListener("pageshow", onVis);
-
-    const unlock = () => kick();
-    window.addEventListener("touchstart", unlock, { passive: true });
-    window.addEventListener("touchend", unlock, { passive: true });
-    window.addEventListener("pointerdown", unlock, { passive: true });
+    // Any gesture unlocks autoplay on strict Safari / Low Power Mode
+    window.addEventListener("touchstart", kickPlay, { passive: true });
+    window.addEventListener("pointerdown", kickPlay, { passive: true });
 
     return () => {
-      events.forEach((evt) => el.removeEventListener(evt, onReady));
+      running = false;
+      cancelAnimationFrame(raf);
       delays.forEach(clearTimeout);
       window.clearInterval(watchId);
+      window.removeEventListener("resize", onResize);
       document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("pageshow", onVis);
-      window.removeEventListener("touchstart", unlock);
-      window.removeEventListener("touchend", unlock);
-      window.removeEventListener("pointerdown", unlock);
-      el.pause();
+      window.removeEventListener("touchstart", kickPlay);
+      window.removeEventListener("pointerdown", kickPlay);
+      ["loadedmetadata", "loadeddata", "canplay", "canplaythrough"].forEach(
+        (evt) => video.removeEventListener(evt, onReady),
+      );
+      video.pause();
     };
-  }, [kick, src]);
+  }, [kickPlay, src]);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden bg-black" aria-hidden>
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none absolute inset-0 z-[1] h-full w-full"
+      />
       <video
         ref={videoRef}
-        className="splash-video pointer-events-none absolute inset-0 h-full w-full object-cover opacity-85"
+        className="splash-video-source"
         src={src}
         autoPlay
         muted
@@ -112,6 +152,7 @@ function AutoplayVideoLoop({ src }: { src: string }) {
         disablePictureInPicture
         disableRemotePlayback
         tabIndex={-1}
+        aria-hidden
       />
     </div>
   );
@@ -130,7 +171,6 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
     };
   }, []);
 
-  // Exit zoom via WAAPI — applied only after click, so iOS autoplay is never blocked by transform
   useEffect(() => {
     if (!exiting || !rootRef.current) return;
 
@@ -174,7 +214,6 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
       aria-label="Bienvenida DM Ceuticals"
       tabIndex={0}
       className="fixed inset-0 z-[100] h-[100dvh] w-screen touch-manipulation overflow-hidden bg-black"
-      // No transform/filter here while playing — critical for iPhone autoplay
       onClick={startExit}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -183,7 +222,7 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
         }
       }}
     >
-      <AutoplayVideoLoop src="/videos/dna-intro.mp4" />
+      <CanvasVideoLoop src="/videos/dna-intro.mp4" />
 
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/65"

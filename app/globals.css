@@ -223,22 +223,30 @@ body {
   }
 }
 
-/* Hide iOS/Safari native ▶ overlay on splash background video */
-.splash-video {
-  -webkit-appearance: none;
-  appearance: none;
+/* Decoder under canvas — invisible, no hit-testing, never shows Safari ▶ */
+.splash-video-source {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
 }
 
-.splash-video::-webkit-media-controls-start-playback-button,
-.splash-video::-webkit-media-controls-overlay-play-button,
-.splash-video::-webkit-media-controls,
-.splash-video::-webkit-media-controls-enclosure,
-.splash-video::-webkit-media-controls-panel {
+.splash-video-source::-webkit-media-controls-start-playback-button,
+.splash-video-source::-webkit-media-controls-overlay-play-button,
+.splash-video-source::-webkit-media-controls,
+.splash-video-source::-webkit-media-controls-enclosure,
+.splash-video-source::-webkit-media-controls-panel {
   display: none !important;
   -webkit-appearance: none !important;
   opacity: 0 !important;
+  pointer-events: none !important;
   width: 0 !important;
   height: 0 !important;
-  pointer-events: none !important;
 }
+
+
 

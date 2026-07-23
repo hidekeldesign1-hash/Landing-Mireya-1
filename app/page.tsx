@@ -7,21 +7,26 @@ import { Systems } from "@/sections/Systems";
 import { ConsultationSocial } from "@/sections/ConsultationSocial";
 import { JourneyTimeline } from "@/sections/JourneyTimeline";
 import { Footer } from "@/sections/Footer";
+import { DnaCanvasBackground } from "@/components/DnaCanvasBackground";
+import { HomeExperience } from "@/components/HomeExperience";
 
 export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Empathy />
-        <SkinLanguage />
-        <ThreePaths />
-        <Systems />
-        <ConsultationSocial />
-        <JourneyTimeline />
-      </main>
-      <Footer />
-    </>
+    <HomeExperience>
+      <DnaCanvasBackground />
+      <div className="relative z-10">
+        <Navbar />
+        <main className="bg-transparent">
+          <Hero />
+          <Empathy />
+          <SkinLanguage />
+          <ThreePaths />
+          <Systems />
+          <ConsultationSocial />
+          <JourneyTimeline />
+        </main>
+        <Footer />
+      </div>
+    </HomeExperience>
   );
 }

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRightIcon,
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -12,10 +11,10 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { panelVariants } from "@/lib/animations";
 import { links } from "@/lib/data/links";
 import { beforeAfter, socialTestimonials } from "@/lib/data/testimonials";
+import { cn, glassCardClass, glassCardSoftClass } from "@/lib/utils";
 
 const consultationPoints = [
   "Valoración integral de lo que tu piel comunica",
@@ -35,55 +34,73 @@ export function ConsultationSocial() {
     setIndex((i) => (i === beforeAfter.length - 1 ? 0 : i + 1));
 
   return (
-    <section id="consulta" className="bg-cream py-16 sm:py-20 lg:py-24">
-      <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <MotionSection>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-forest">
-            Consulta Mireya Díaz
-          </p>
-          <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            Acompañamiento profesional cuando quieres ir más profundo
-          </h2>
-          <div className="mt-8 overflow-hidden rounded-[1.75rem] bg-beige">
-            <div className="relative aspect-[4/5] w-full sm:aspect-[5/4]">
-              <Image
-                src="/images/mireya-diaz.webp"
-                alt="Mireya Díaz, especialista en cuidado integral de la piel"
-                fill
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover object-[center_20%]"
-              />
+    <section id="consulta" className="relative bg-transparent px-4 py-6 md:px-8 md:py-8">
+      <Container className={cn(glassCardClass, "py-0")}>
+        <div className="grid grid-cols-1 divide-y divide-white/25 lg:grid-cols-12 lg:divide-x lg:divide-y-0">
+          {/* Consultation */}
+          <MotionSection className="p-6 sm:p-8 lg:col-span-6 lg:p-10 xl:p-12">
+            <span className="mb-5 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
+              <span aria-hidden>●</span>
+              05 / CONSULTA MIREYA DÍAZ
+            </span>
+            <h2 className="text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
+              Acompañamiento profesional cuando quieres ir más profundo
+            </h2>
+
+            <div className="relative mt-8">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-white/20 sm:aspect-[5/4] mask-squircle">
+                <Image
+                  src="/images/mireya-diaz.webp"
+                  alt="Mireya Díaz, especialista en cuidado integral de la piel"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover object-[center_20%]"
+                />
+              </div>
+              <span className="absolute bottom-4 right-4 flex items-center gap-1 rounded-full border border-white/40 bg-white/25 px-3 py-1 text-[10px] uppercase tracking-wider text-black backdrop-blur-md">
+                ↗ explore
+              </span>
+              <span className="absolute left-4 top-4 rounded-full border border-white/40 bg-white/25 px-2.5 py-1 text-[9px] uppercase tracking-wider text-gray-700 backdrop-blur-md">
+                ~ expert
+              </span>
             </div>
-          </div>
-          <ul className="mt-8 space-y-3">
-            {consultationPoints.map((point) => (
-              <li key={point} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-forest text-white">
-                  <CheckIcon className="h-3.5 w-3.5" />
-                </span>
-                <span className="text-sm leading-relaxed text-muted sm:text-base">
-                  {point}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <Button href={links.consultation} className="mt-8">
-            Agendar consulta
-            <ArrowRightIcon className="h-4 w-4" />
-          </Button>
-        </MotionSection>
 
-        <MotionSection className="flex flex-col">
-          <SectionHeading
-            align="left"
-            eyebrow="Prueba social"
-            title="Antes y después reales"
-            subtitle="Historias de quienes recuperaron confianza y bienestar emocional al comprender su piel."
-            className="max-w-none"
-          />
+            <ul className="mt-8 divide-y divide-gray-200 border-y border-gray-200">
+              {consultationPoints.map((point, i) => (
+                <li key={point} className="flex items-start gap-3 py-3.5">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gray-200 text-black">
+                    <CheckIcon className="h-3 w-3" />
+                  </span>
+                  <span className="font-mono text-[9px] tracking-widest text-gray-400">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-xs leading-relaxed text-gray-600 md:text-sm">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
 
-          <div className="mt-8 flex-1">
-            <div className="relative overflow-hidden rounded-[1.75rem] bg-beige p-5 sm:p-6">
+            <Button href={links.consultation} className="mt-8">
+              Agendar consulta
+            </Button>
+          </MotionSection>
+
+          {/* Social proof */}
+          <MotionSection className="flex flex-col bg-white/10 p-6 sm:p-8 lg:col-span-6 lg:p-10 xl:p-12">
+            <span className="mb-5 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-gray-500">
+              <span aria-hidden>●</span>
+              06 / PRUEBA SOCIAL
+            </span>
+            <h2 className="text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl">
+              Antes y después reales
+            </h2>
+            <p className="mt-4 max-w-md text-xs leading-relaxed text-gray-600 md:text-sm">
+              Historias de quienes recuperaron confianza y bienestar emocional
+              al comprender su piel.
+            </p>
+
+            <div className={cn(glassCardSoftClass, "mt-8 flex-1 p-5 sm:p-6")}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
@@ -92,16 +109,18 @@ export function ConsultationSocial() {
                   exit={reduceMotion ? undefined : "exit"}
                   variants={reduceMotion ? undefined : panelVariants}
                 >
-                  <p className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-ink">
+                  <p className="mb-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-gray-500">
                     {current.label}
                   </p>
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     {[
-                      { src: current.before, label: "Antes" },
-                      { src: current.after, label: "Después" },
+                      { src: current.before, label: "Antes", mask: "mask-soft-bl" },
+                      { src: current.after, label: "Después", mask: "mask-soft-br" },
                     ].map((item) => (
                       <div key={item.label} className="relative">
-                        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+                        <div
+                          className={`relative aspect-[3/4] overflow-hidden bg-white/20 ${item.mask}`}
+                        >
                           <Image
                             src={item.src}
                             alt={`${item.label} — ${current.label}`}
@@ -110,7 +129,7 @@ export function ConsultationSocial() {
                             className="object-cover"
                           />
                         </div>
-                        <span className="absolute left-3 top-3 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-ink">
+                        <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full border border-white/40 bg-white/30 px-2.5 py-1 text-[9px] uppercase tracking-wider text-black backdrop-blur-md">
                           {item.label}
                         </span>
                       </div>
@@ -119,14 +138,14 @@ export function ConsultationSocial() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="mt-5 flex items-center justify-between">
+              <div className="mt-5 flex items-center justify-between border-t border-white/25 pt-4">
                 <button
                   type="button"
                   onClick={prev}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
+                  className="cta-interactive cta-shine cta-shine-soft inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 bg-white/20 text-black backdrop-blur-md"
                   aria-label="Caso anterior"
                 >
-                  <ChevronLeftIcon className="h-5 w-5" />
+                  <ChevronLeftIcon className="relative z-[1] h-4 w-4" />
                 </button>
                 <div className="flex gap-2">
                   {beforeAfter.map((item, i) => (
@@ -134,8 +153,8 @@ export function ConsultationSocial() {
                       key={item.id}
                       type="button"
                       onClick={() => setIndex(i)}
-                      className={`h-2 w-2 rounded-full transition-colors ${
-                        i === index ? "bg-forest" : "bg-forest/25"
+                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                        i === index ? "bg-black" : "bg-black/25"
                       }`}
                       aria-label={`Ver caso ${i + 1}`}
                     />
@@ -144,41 +163,44 @@ export function ConsultationSocial() {
                 <button
                   type="button"
                   onClick={next}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/30 text-forest transition-colors hover:bg-forest hover:text-white"
+                  className="cta-interactive cta-shine cta-shine-soft inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 bg-white/20 text-black backdrop-blur-md"
                   aria-label="Caso siguiente"
                 >
-                  <ChevronRightIcon className="h-5 w-5" />
+                  <ChevronRightIcon className="relative z-[1] h-4 w-4" />
                 </button>
               </div>
             </div>
 
-            <MotionSection stagger className="mt-6 grid gap-4 sm:grid-cols-3">
+            <MotionSection
+              stagger
+              className="mt-6 grid divide-y divide-white/20 overflow-hidden rounded-2xl border border-white/30 bg-white/15 backdrop-blur-md sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+            >
               {socialTestimonials.map((t) => (
                 <MotionItem key={t.id}>
-                  <blockquote className="h-full rounded-2xl border border-beige-dark/60 bg-white/50 p-4">
+                  <blockquote className="h-full p-4">
                     <div className="mb-3 flex items-center gap-2">
-                      <div className="relative h-9 w-9 overflow-hidden rounded-full">
+                      <div className="relative h-8 w-8 overflow-hidden bg-gray-100 mask-blob-a">
                         <Image
                           src={t.avatar}
                           alt={t.name}
                           fill
-                          sizes="36px"
+                          sizes="32px"
                           className="object-cover"
                         />
                       </div>
-                      <cite className="not-italic text-sm font-semibold text-ink">
+                      <cite className="not-italic text-[10px] font-bold uppercase tracking-wider text-black">
                         {t.name}
                       </cite>
                     </div>
-                    <p className="text-xs leading-relaxed text-muted">
+                    <p className="text-[11px] leading-relaxed text-gray-600">
                       “{t.quote}”
                     </p>
                   </blockquote>
                 </MotionItem>
               ))}
             </MotionSection>
-          </div>
-        </MotionSection>
+          </MotionSection>
+        </div>
       </Container>
     </section>
   );

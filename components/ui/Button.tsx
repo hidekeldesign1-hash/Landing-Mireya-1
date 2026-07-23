@@ -11,16 +11,30 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   ariaLabel?: string;
+  showArrow?: boolean;
 };
 
 const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-forest text-white hover:bg-forest-light border border-transparent",
+  primary: "bg-black text-white hover:bg-gray-800 border border-black",
   outline:
-    "bg-white text-forest border border-forest hover:bg-forest hover:text-white",
-  gold: "bg-forest text-white hover:bg-forest-light border border-transparent",
-  ghost: "bg-transparent text-ink border border-transparent hover:bg-beige",
+    "bg-white text-black border border-gray-200 hover:border-black hover:bg-gray-50",
+  gold: "bg-black text-white hover:bg-gray-800 border border-black",
+  ghost: "bg-transparent text-black border border-transparent hover:bg-gray-50",
 };
+
+function ArrowCircle({ light }: { light?: boolean }) {
+  return (
+    <span
+      className={cn(
+        "relative z-[1] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] leading-none",
+        light ? "bg-white text-black" : "bg-black text-white",
+      )}
+      aria-hidden
+    >
+      ↗
+    </span>
+  );
+}
 
 export function Button({
   children,
@@ -30,11 +44,21 @@ export function Button({
   onClick,
   type = "button",
   ariaLabel,
+  showArrow = true,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-cream",
+    "cta-interactive cta-shine inline-flex items-center justify-center gap-3 rounded-full px-5 py-2.5 text-xs font-medium uppercase tracking-[0.12em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
     variants[variant],
     className,
+  );
+
+  const content = (
+    <>
+      <span className="relative z-[1]">{children}</span>
+      {showArrow ? (
+        <ArrowCircle light={variant === "primary" || variant === "gold"} />
+      ) : null}
+    </>
   );
 
   if (href) {
@@ -50,26 +74,21 @@ export function Button({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {children}
+          {content}
         </a>
       );
     }
 
     return (
       <Link href={href} className={classes} aria-label={ariaLabel} onClick={onClick}>
-        {children}
+        {content}
       </Link>
     );
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={classes}
-      aria-label={ariaLabel}
-    >
-      {children}
+    <button type={type} onClick={onClick} className={classes} aria-label={ariaLabel}>
+      {content}
     </button>
   );
 }

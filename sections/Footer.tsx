@@ -2,11 +2,11 @@ import {
   BookIcon,
   HeartIcon,
   InstagramIcon,
-  LeafIcon,
   SparkIcon,
   TikTokIcon,
   WhatsAppIcon,
 } from "@/components/icons/LineIcons";
+import { DmLogo } from "@/components/brand/DmLogo";
 import { Container } from "@/components/ui/Container";
 
 const pillars = [
@@ -47,69 +47,61 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
-      <div
-        className="pointer-events-none absolute -bottom-10 -right-6 text-forest/30"
-        aria-hidden
-      >
-        <LeafIcon className="h-40 w-40 sm:h-52 sm:w-52" />
-      </div>
-
-      <Container className="relative grid gap-12 py-14 sm:py-16 lg:grid-cols-3 lg:gap-10 lg:py-20">
-        <div className="space-y-5">
-          {pillars.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="flex items-start gap-3">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forest/50 text-forest">
-                <Icon className="h-5 w-5" />
-              </span>
-              <p className="text-sm leading-relaxed">
-                <span className="font-semibold text-white">{title}</span>{" "}
-                <span className="text-white/70">{text}</span>
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-col items-center justify-center text-center">
-          <p className="flex items-center gap-2 font-sans tracking-wide">
-            <span className="inline-flex h-9 w-9 items-center justify-center bg-forest text-xs font-bold text-white">
-              DM
-            </span>
-            <span className="text-sm font-semibold tracking-[0.28em]">
-              CEUTICALS
-            </span>
-          </p>
-          <p className="mt-4 max-w-xs font-sans text-lg font-semibold leading-snug text-forest-light">
-            La piel no es el enemigo. Es el mensajero.
-          </p>
-
-          <div className="mt-6 flex items-center justify-center gap-3">
-            {socialLinks.map(({ href, label, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-forest/50 text-forest transition-colors hover:bg-forest hover:text-white"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
+    <footer className="border-t border-gray-200 bg-black text-white">
+      <Container className="py-0">
+        <div className="grid grid-cols-1 divide-y divide-white/10 border-x border-white/10 lg:grid-cols-12 lg:divide-x lg:divide-y-0">
+          <div className="divide-y divide-white/10 lg:col-span-4">
+            {pillars.map(({ icon: Icon, title, text }, index) => (
+              <div key={title} className="flex items-start gap-3 px-6 py-5 sm:px-8">
+                <span className="font-mono text-[9px] tracking-widest text-white/35">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 text-white">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <p className="text-xs leading-relaxed">
+                  <span className="font-bold uppercase tracking-wide text-white">
+                    {title}
+                  </span>{" "}
+                  <span className="text-white/55">{text}</span>
+                </p>
+              </div>
             ))}
           </div>
-        </div>
 
-        <div className="flex flex-col justify-center lg:items-end lg:text-right">
-          <p className="max-w-sm text-sm leading-relaxed text-white/75">
-            Educamos antes de usar, sugerimos antes de comprar y acompañamos
-            antes de intervenir. Porque comprender tu piel es el primer paso
-            hacia el bienestar.
-          </p>
+          <div className="flex flex-col items-center justify-center px-6 py-12 text-center lg:col-span-4">
+            <DmLogo inverted className="mx-auto h-10 w-auto sm:h-11" />
+            <p className="mt-6 max-w-xs text-lg font-black uppercase leading-none tracking-tighter text-white">
+              La piel no es el enemigo. Es el mensajero.
+            </p>
 
-          <p className="mt-8 text-xs tracking-wide text-white/50">
-            © {new Date().getFullYear()} DM Ceuticals. Todos los derechos
-            reservados.
-          </p>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              {socialLinks.map(({ href, label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="cta-interactive cta-shine cta-shine-soft inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black"
+                >
+                  <Icon className="relative z-[1] h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-center px-6 py-10 sm:px-8 lg:col-span-4 lg:items-end lg:text-right">
+            <p className="max-w-sm text-xs leading-relaxed text-white/55 md:text-sm">
+              Educamos antes de usar, sugerimos antes de comprar y acompañamos
+              antes de intervenir. Porque comprender tu piel es el primer paso
+              hacia el bienestar.
+            </p>
+            <p className="mt-8 font-mono text-[9px] uppercase tracking-[0.18em] text-white/35">
+              © {new Date().getFullYear()} DM Ceuticals. Todos los derechos
+              reservados.
+            </p>
+          </div>
         </div>
       </Container>
     </footer>

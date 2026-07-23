@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* DM Ceuticals Shopify brand system */
   --color-cream: #ffffff;
-  --color-beige: #f3f8f9;
-  --color-beige-dark: #e2eef0;
-  --color-forest: #00a3a6;
-  --color-forest-light: #00b8bb;
-  --color-sage: #dff3f3;
-  --color-sage-muted: #eef8f8;
-  --color-gold: #00a3a6;
-  --color-gold-light: #33b5b7;
-  --color-gold-dark: #008a8d;
-  --color-lavender: #e8f4f5;
-  --color-lavender-dark: #00a3a6;
-  --color-ink: #1a2a3a;
-  --color-muted: #5a6a78;
-  --color-muted-light: #8a97a3;
-  --font-sans: var(--font-montserrat);
-  --font-serif: var(--font-montserrat);
+  --color-beige: #f9fafb;
+  --color-beige-dark: #e5e7eb;
+  --color-forest: #0a0a0a;
+  --color-forest-light: #1f1f1f;
+  --color-sage: #f3f4f6;
+  --color-sage-muted: #f9fafb;
+  --color-gold: #0a0a0a;
+  --color-gold-light: #404040;
+  --color-gold-dark: #0a0a0a;
+  --color-lavender: #f3f4f6;
+  --color-lavender-dark: #0a0a0a;
+  --color-ink: #0a0a0a;
+  --color-muted: #6b7280;
+  --color-muted-light: #9ca3af;
+  --color-accent: #00a3a6;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-inter);
 }
 
 html {
@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
+  background-color: #f2f4f7;
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,28 +34,184 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-forest) 30%, transparent);
+  background-color: color-mix(in srgb, #0a0a0a 12%, transparent);
   color: var(--color-ink);
 }
 
-.hexagon {
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+/* Organic / editorial image masks */
+.mask-clover {
+  border-radius: 58% 42% 55% 45% / 48% 52% 48% 52%;
 }
 
-/* Hero image organic masks (SVG clipPath ids defined in Hero.tsx) */
-.hero-image-mask {
-  clip-path: url(#hero-curve-mobile);
+.mask-pill {
+  border-radius: 999px;
 }
 
-@media (min-width: 1024px) {
-  .hero-image-mask {
-    clip-path: url(#hero-curve-desktop);
+.mask-squircle {
+  border-radius: 100px 40px 100px 40px;
+}
+
+.mask-soft-bl {
+  border-radius: 3rem 3rem 0.75rem 3rem;
+}
+
+.mask-soft-br {
+  border-radius: 3rem 3rem 3rem 0.75rem;
+}
+
+.mask-soft-tr {
+  border-radius: 0.75rem 3rem 3rem 3rem;
+}
+
+.mask-blob-a {
+  border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+}
+
+.mask-blob-b {
+  border-radius: 60% 40% 45% 55% / 40% 55% 45% 60%;
+}
+
+.mask-blob-c {
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+}
+
+/* Hero portrait fade + glow (AFWERX-style) */
+.hero-portrait-fade {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.85) 72%,
+    rgba(0, 0, 0, 0.4) 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.85) 72%,
+    rgba(0, 0, 0, 0.4) 88%,
+    transparent 100%
+  );
+}
+
+.hero-glow-ring {
+  background: conic-gradient(
+    from 200deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.95) 40deg,
+    transparent 90deg,
+    transparent 200deg,
+    rgba(255, 255, 255, 0.55) 250deg,
+    transparent 310deg
+  );
+  filter: blur(0.5px);
+  opacity: 0.85;
+  -webkit-mask-image: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000 calc(100% - 1px)
+  );
+  mask-image: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 2px),
+    #000 calc(100% - 1px)
+  );
+}
+
+/* —— Glass cards (CTA glass look) —— */
+.glass-card {
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 16px 48px -24px rgba(0, 0, 0, 0.12);
+}
+
+.glass-card-soft {
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* —— CTA hover lift + constant shine —— */
+.cta-interactive {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.cta-interactive:hover {
+  transform: translateY(-3px) scale(1.035);
+}
+
+.cta-interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cta-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+  transform: translateX(-130%) skewX(-12deg);
+  animation: cta-shimmer 2.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.cta-shine-soft::before {
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+}
+
+@keyframes cta-shimmer {
+  0%,
+  15% {
+    transform: translateX(-130%) skewX(-12deg);
+  }
+  45%,
+  100% {
+    transform: translateX(130%) skewX(-12deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .cta-interactive:hover,
+  .cta-interactive:active {
+    transform: none;
+  }
+
+  .cta-shine::before {
+    animation: none;
+    opacity: 0;
   }
 
   *,

@@ -7,9 +7,9 @@ type IconCircleProps = {
 };
 
 const sizes = {
-  sm: "h-10 w-10",
-  md: "h-14 w-14",
-  lg: "h-16 w-16",
+  sm: "h-8 w-8",
+  md: "h-10 w-10",
+  lg: "h-12 w-12",
 };
 
 export function IconCircle({
@@ -18,14 +18,14 @@ export function IconCircle({
   size = "md",
 }: IconCircleProps) {
   return (
-    <div
+    <span
       className={cn(
-        "inline-flex items-center justify-center rounded-full border border-forest/35 bg-white text-forest",
+        "inline-flex items-center justify-center rounded-full border border-black/10 bg-beige text-ink",
         sizes[size],
         className,
       )}
     >
       {children}
-    </div>
+    </span>
   );
 }

@@ -11,6 +11,7 @@ type SplashScreenProps = {
   onComplete: () => void;
 };
 
+const VIDEO_SRC = "/videos/dna-intro.mp4";
 const FADE_MS = 1200;
 const FADE_SEC = FADE_MS / 1000;
 
@@ -18,242 +19,291 @@ function sleep(ms: number) {
   return new Promise<void>((r) => window.setTimeout(r, ms));
 }
 
+function isMobileLike() {
+  if (typeof window === "undefined") return true;
+  const ua = navigator.userAgent || "";
+  const iOS =
+    /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const android = /Android/i.test(ua);
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const narrow = window.matchMedia("(max-width: 900px)").matches;
+  return iOS || android || coarse || narrow;
+}
+
+function prepVideo(el: HTMLVideoElement) {
+  el.muted = true;
+  el.defaultMuted = true;
+  el.playsInline = true;
+  el.autoplay = true;
+  el.loop = true;
+  el.setAttribute("muted", "");
+  el.setAttribute("playsinline", "");
+  el.setAttribute("webkit-playsinline", "true");
+  el.setAttribute("x-webkit-airplay", "deny");
+  el.disablePictureInPicture = true;
+  el.preload = "auto";
+}
+
+async function playSafe(el: HTMLVideoElement | null) {
+  if (!el) return;
+  prepVideo(el);
+  try {
+    // iOS: seek 0 if stalled at end
+    if (el.ended) el.currentTime = 0;
+    await el.play();
+  } catch {
+    /* unlocked on first gesture */
+  }
+}
+
 /**
- * Seamless DNA loop that cannot freeze:
- * - Two independent Blob URLs (avoids same-src decoder bugs)
- * - Crossfade handoff near the end
- * - Both layers keep `loop=true` as a hard safety net
- * - Watchdog restarts playback if time stalls
+ * Mobile / iOS / Android: one native looping <video> with a direct file URL.
+ * Blob dual-buffers often render black on Safari iOS — this path avoids that.
  */
-function SeamlessVideoLoop({ src }: { src: string }) {
-  const hostRef = useRef<HTMLDivElement>(null);
+function MobileVideoLoop({
+  src,
+  playSignal,
+}: {
+  src: string;
+  playSignal: number;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const host = hostRef.current;
-    if (!host) return;
+    const el = ref.current;
+    if (!el) return;
+    prepVideo(el);
+    void playSafe(el);
 
-    let cancelled = false;
-    let urlA = "";
-    let urlB = "";
-    let pollId = 0;
-    let watchdogId = 0;
-    let swapping = false;
-    let lastTime = 0;
-    let stallChecks = 0;
+    const kick = () => void playSafe(el);
+    el.addEventListener("loadeddata", kick);
+    el.addEventListener("canplay", kick);
+    el.addEventListener("suspend", kick);
+    el.addEventListener("stalled", kick);
 
-    const v1 = document.createElement("video");
-    const v2 = document.createElement("video");
-    let active = v1;
-    let standby = v2;
-
-    const styleVideo = (v: HTMLVideoElement, visible: boolean) => {
-      v.muted = true;
-      v.defaultMuted = true;
-      v.playsInline = true;
-      v.setAttribute("playsinline", "");
-      v.setAttribute("webkit-playsinline", "");
-      v.preload = "auto";
-      // Safety: native loop so a missed handoff never freezes on the last frame
-      v.loop = true;
-      v.disablePictureInPicture = true;
-      v.style.cssText = [
-        "position:absolute",
-        "inset:0",
-        "width:100%",
-        "height:100%",
-        "object-fit:cover",
-        "pointer-events:none",
-        `opacity:${visible ? 1 : 0}`,
-        "transition:none",
-      ].join(";");
-    };
-
-    const play = async (v: HTMLVideoElement) => {
-      v.muted = true;
-      try {
-        await v.play();
-      } catch {
-        /* autoplay may unlock on splash tap */
+    // Soften the native loop seam with a brief opacity dip
+    let last = 0;
+    const onTime = () => {
+      const d = el.duration;
+      if (!Number.isFinite(d) || d < 2) return;
+      const t = el.currentTime;
+      if (t < last - 1) {
+        // wrapped
+        el.style.opacity = "0.55";
+        window.setTimeout(() => {
+          el.style.opacity = "0.85";
+        }, 180);
+      } else if (t >= d - 0.35) {
+        el.style.opacity = "0.7";
+      } else if (t > 0.5 && Number(el.style.opacity) < 0.85) {
+        el.style.opacity = "0.85";
       }
+      last = t;
     };
+    el.addEventListener("timeupdate", onTime);
 
-    const waitReady = (v: HTMLVideoElement) =>
-      new Promise<void>((resolve) => {
-        if (v.readyState >= 2) {
-          resolve();
-          return;
-        }
-        const done = () => {
-          v.removeEventListener("canplay", done);
-          resolve();
-        };
-        v.addEventListener("canplay", done);
-        window.setTimeout(done, 8000);
-      });
-
-    const swap = async () => {
-      if (cancelled || swapping) return;
-      swapping = true;
-
-      try {
-        // Rewind standby and start it under the fade
-        standby.pause();
-        standby.currentTime = 0;
-        await play(standby);
-        // If still not running, one more try after a tick
-        if (standby.paused) {
-          await sleep(50);
-          standby.currentTime = 0;
-          await play(standby);
-        }
-
-        standby.style.transition = `opacity ${FADE_MS}ms linear`;
-        active.style.transition = `opacity ${FADE_MS}ms linear`;
-        // Force reflow so the transition applies
-        void standby.offsetHeight;
-        standby.style.opacity = "1";
-        active.style.opacity = "0";
-
-        await sleep(FADE_MS);
-        if (cancelled) return;
-
-        active.style.transition = "none";
-        standby.style.transition = "none";
-        active.pause();
-        active.currentTime = 0;
-
-        const prev = active;
-        active = standby;
-        standby = prev;
-
-        active.style.opacity = "1";
-        standby.style.opacity = "0";
-        await play(active);
-        lastTime = active.currentTime;
-        stallChecks = 0;
-      } catch {
-        // Absolute fallback: keep whichever layer is visible looping
-        active.loop = true;
-        active.style.transition = "none";
-        standby.style.transition = "none";
-        active.style.opacity = "1";
-        standby.style.opacity = "0";
-        standby.pause();
-        if (active.paused || active.ended) {
-          active.currentTime = 0;
-          await play(active);
-        }
-      } finally {
-        swapping = false;
-      }
-    };
-
-    const boot = async () => {
-      const res = await fetch(src, { cache: "force-cache" });
-      const buffer = await res.arrayBuffer();
-      // Two separate blobs → two independent media pipelines
-      urlA = URL.createObjectURL(new Blob([buffer], { type: "video/mp4" }));
-      urlB = URL.createObjectURL(
-        new Blob([buffer.slice(0)], { type: "video/mp4" }),
-      );
-
-      if (cancelled) return;
-
-      styleVideo(v1, true);
-      styleVideo(v2, false);
-      v1.src = urlA;
-      v2.src = urlB;
-      host.replaceChildren(v1, v2);
-
-      await Promise.all([waitReady(v1), waitReady(v2)]);
-      if (cancelled) return;
-
-      await play(v1);
-      active = v1;
-      standby = v2;
-      lastTime = v1.currentTime;
-
-      // Handoff poll
-      pollId = window.setInterval(() => {
-        if (cancelled || swapping) return;
-        const d = active.duration;
-        if (!Number.isFinite(d) || d < 3) return;
-        // Start blend before the native loop point
-        if (active.currentTime >= d - FADE_SEC - 0.05) {
-          void swap();
-        }
-      }, 100);
-
-      // Stall watchdog — if time doesn't advance, force play / rewind
-      watchdogId = window.setInterval(() => {
-        if (cancelled || swapping) return;
-        const t = active.currentTime;
-        const d = active.duration;
-        // Near the seam the clock can briefly pause — don't fight the crossfade
-        if (Number.isFinite(d) && t >= d - FADE_SEC - 0.15) {
-          lastTime = t;
-          stallChecks = 0;
-          return;
-        }
-        if (active.paused) {
-          void play(active);
-          return;
-        }
-        if (Math.abs(t - lastTime) < 0.01) {
-          stallChecks += 1;
-          if (stallChecks >= 8) {
-            // ~1.6s stalled → hard recover (loop safety also covers this)
-            stallChecks = 0;
-            try {
-              active.currentTime = 0;
-            } catch {
-              /* ignore */
-            }
-            void play(active);
-          }
-        } else {
-          stallChecks = 0;
-          lastTime = t;
-        }
-      }, 200);
-    };
-
-    void boot();
-
-    const onVis = () => {
-      if (!document.hidden && !cancelled) void play(active);
-    };
-    document.addEventListener("visibilitychange", onVis);
+    const id = window.setInterval(() => {
+      if (el.paused) void playSafe(el);
+    }, 800);
 
     return () => {
-      cancelled = true;
-      window.clearInterval(pollId);
-      window.clearInterval(watchdogId);
-      document.removeEventListener("visibilitychange", onVis);
-      v1.pause();
-      v2.pause();
-      v1.removeAttribute("src");
-      v2.removeAttribute("src");
-      v1.load();
-      v2.load();
-      if (urlA) URL.revokeObjectURL(urlA);
-      if (urlB) URL.revokeObjectURL(urlB);
-      host.replaceChildren();
+      el.removeEventListener("loadeddata", kick);
+      el.removeEventListener("canplay", kick);
+      el.removeEventListener("suspend", kick);
+      el.removeEventListener("stalled", kick);
+      el.removeEventListener("timeupdate", onTime);
+      window.clearInterval(id);
     };
   }, [src]);
 
+  useEffect(() => {
+    void playSafe(ref.current);
+  }, [playSignal]);
+
   return (
-    <div
-      ref={hostRef}
-      className="pointer-events-none absolute inset-0 bg-black opacity-80"
+    <video
+      ref={ref}
+      src={src}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      style={{ opacity: 0.85 }}
       aria-hidden
     />
+  );
+}
+
+/**
+ * Desktop: dual direct-URL layers (no Blob fetch) with crossfade near the end.
+ */
+function DesktopSeamlessLoop({
+  src,
+  playSignal,
+}: {
+  src: string;
+  playSignal: number;
+}) {
+  const aRef = useRef<HTMLVideoElement>(null);
+  const bRef = useRef<HTMLVideoElement>(null);
+  const activeIdx = useRef(0);
+  const busy = useRef(false);
+  const [opA, setOpA] = useState(1);
+  const [opB, setOpB] = useState(0);
+
+  useEffect(() => {
+    const a = aRef.current;
+    const b = bRef.current;
+    if (!a || !b) return;
+
+    const vids = [a, b];
+    let cancelled = false;
+    let poll = 0;
+
+    prepVideo(a);
+    prepVideo(b);
+    a.loop = true;
+    b.loop = true;
+
+    const setOps = (active: number, blend = 1) => {
+      if (active === 0) {
+        setOpA(blend);
+        setOpB(1 - blend);
+      } else {
+        setOpB(blend);
+        setOpA(1 - blend);
+      }
+    };
+
+    const swap = async () => {
+      if (cancelled || busy.current) return;
+      busy.current = true;
+      const from = activeIdx.current;
+      const to = 1 - from;
+      const cur = vids[from];
+      const next = vids[to];
+
+      try {
+        next.currentTime = 0;
+        await playSafe(next);
+        const start = performance.now();
+        await new Promise<void>((resolve) => {
+          const step = (now: number) => {
+            if (cancelled) {
+              resolve();
+              return;
+            }
+            const t = Math.min(1, (now - start) / FADE_MS);
+            const e = t * t * (3 - 2 * t);
+            setOps(from, 1 - e);
+            if (t < 1) requestAnimationFrame(step);
+            else resolve();
+          };
+          requestAnimationFrame(step);
+        });
+        if (cancelled) return;
+        cur.pause();
+        cur.currentTime = 0;
+        activeIdx.current = to;
+        setOps(to, 1);
+        await playSafe(next);
+      } catch {
+        activeIdx.current = from;
+        setOps(from, 1);
+        await playSafe(cur);
+      } finally {
+        busy.current = false;
+      }
+    };
+
+    void (async () => {
+      await playSafe(a);
+      activeIdx.current = 0;
+      setOps(0, 1);
+      poll = window.setInterval(() => {
+        if (cancelled || busy.current) return;
+        const active = vids[activeIdx.current];
+        if (active.paused) void playSafe(active);
+        const d = active.duration;
+        if (Number.isFinite(d) && d > 3 && active.currentTime >= d - FADE_SEC) {
+          void swap();
+        }
+      }, 120);
+    })();
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(poll);
+      a.pause();
+      b.pause();
+    };
+  }, [src]);
+
+  useEffect(() => {
+    void playSafe(aRef.current);
+    void playSafe(bRef.current);
+  }, [playSignal]);
+
+  const cls =
+    "pointer-events-none absolute inset-0 h-full w-full object-cover";
+
+  return (
+    <>
+      <video
+        ref={aRef}
+        src={`${src}?layer=a`}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        className={cls}
+        style={{ opacity: opA * 0.85 }}
+        aria-hidden
+      />
+      <video
+        ref={bRef}
+        src={`${src}?layer=b`}
+        muted
+        playsInline
+        preload="auto"
+        className={cls}
+        style={{ opacity: opB * 0.85 }}
+        aria-hidden
+      />
+    </>
+  );
+}
+
+function SplashVideo({ playSignal }: { playSignal: number }) {
+  const [mobile, setMobile] = useState(true);
+
+  useEffect(() => {
+    setMobile(isMobileLike());
+  }, []);
+
+  return (
+    <div className="pointer-events-none absolute inset-0 bg-black" aria-hidden>
+      {/* Fallback atmosphere so iOS never sits on pure black while decoding */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,#3a3a3e_0%,#111113_55%,#000_100%)]"
+        aria-hidden
+      />
+      {mobile ? (
+        <MobileVideoLoop src={VIDEO_SRC} playSignal={playSignal} />
+      ) : (
+        <DesktopSeamlessLoop src={VIDEO_SRC} playSignal={playSignal} />
+      )}
+    </div>
   );
 }
 
 export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
   const reduceMotion = useReducedMotion();
   const [exiting, setExiting] = useState(false);
+  const [playSignal, setPlaySignal] = useState(0);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -263,11 +313,17 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
     };
   }, []);
 
+  // Any touch/pointer on the splash unlocks autoplay policies (iOS/Safari)
+  const nudgePlayback = useCallback(() => {
+    setPlaySignal((n) => n + 1);
+  }, []);
+
   const startExit = useCallback(() => {
     if (exiting) return;
+    nudgePlayback();
     onReveal?.();
     setExiting(true);
-  }, [exiting, onReveal]);
+  }, [exiting, onReveal, nudgePlayback]);
 
   return (
     <AnimatePresence
@@ -295,6 +351,7 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
                   transition: { duration: 1.2, ease: PREMIUM_EASE },
                 }
           }
+          onPointerDown={nudgePlayback}
           onClick={startExit}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -303,7 +360,7 @@ export function SplashScreen({ onReveal, onComplete }: SplashScreenProps) {
             }
           }}
         >
-          <SeamlessVideoLoop src="/videos/dna-intro.mp4" />
+          <SplashVideo playSignal={playSignal} />
 
           <div
             className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"

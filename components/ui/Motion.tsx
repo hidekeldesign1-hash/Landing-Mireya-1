@@ -9,7 +9,6 @@ import {
   scaleTap,
   viewportOnce,
 } from "@/lib/animations";
-import { useExperienceReady } from "@/components/ExperienceGate";
 
 type MotionSectionProps = HTMLMotionProps<"div"> & {
   children: React.ReactNode;
@@ -24,25 +23,9 @@ export function MotionSection({
   ...props
 }: MotionSectionProps) {
   const reduceMotion = useReducedMotion();
-  const ready = useExperienceReady();
 
   if (reduceMotion) {
     return <div className={className}>{children}</div>;
-  }
-
-  // Hold in `hidden` until splash reveals; then whileInView runs entrance motions
-  if (!ready) {
-    return (
-      <motion.div
-        className={className}
-        initial="hidden"
-        animate="hidden"
-        variants={stagger ? staggerContainer : fadeInUp}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    );
   }
 
   return (

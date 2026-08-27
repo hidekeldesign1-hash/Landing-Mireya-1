@@ -47,7 +47,7 @@ export function Button({
   showArrow = true,
 }: ButtonProps) {
   const classes = cn(
-    "cta-interactive cta-shine inline-flex items-center justify-center gap-3 rounded-full px-5 py-2.5 text-xs font-medium uppercase tracking-[0.12em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
+    "cta-interactive cta-shine inline-flex min-h-[44px] items-center justify-center gap-3 rounded-full px-5 py-2.5 text-xs font-medium uppercase tracking-[0.12em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2",
     variants[variant],
     className,
   );

@@ -2,37 +2,33 @@ import { Navbar } from "@/sections/Navbar";
 import { Hero } from "@/sections/Hero";
 import { Empathy } from "@/sections/Empathy";
 import { SkinLanguage } from "@/sections/SkinLanguage";
-import { SystemicRootTeaser } from "@/sections/SystemicRootTeaser";
-import { Systems } from "@/sections/Systems";
+import { Team } from "@/sections/Team";
 import { ThreePaths } from "@/sections/ThreePaths";
 import { ConsultationSocial } from "@/sections/ConsultationSocial";
 import { CaminoCierre } from "@/sections/CaminoCierre";
 import { Footer } from "@/sections/Footer";
 import { DnaCanvasBackground } from "@/components/DnaCanvasBackground";
-import { HomeExperience } from "@/components/HomeExperience";
 
 /**
- * Hybrid funnel — una sola narrativa sin bloques duplicados del Camino.
- * Hero → Empatía → Condiciones → Raíz sistémica → Sistemas → Caminos → Prueba social → Cierre
+ * BellaSmile — Hero → Propuesta → Sonrisa → Equipo → Accesos → Reseñas → Ubicación + Cierre
  */
 export default function HomePage() {
   return (
-    <HomeExperience>
+    <>
       <DnaCanvasBackground />
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-clip">
         <Navbar />
         <main className="bg-transparent">
           <Hero />
           <Empathy />
           <SkinLanguage />
-          <SystemicRootTeaser />
-          <Systems />
+          <Team />
           <ThreePaths />
           <ConsultationSocial />
           <CaminoCierre />
         </main>
         <Footer />
       </div>
-    </HomeExperience>
+    </>
   );
 }

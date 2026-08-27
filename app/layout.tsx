@@ -8,10 +8,23 @@ const inter = Inter({
   display: "swap",
 });
 
+const siteDescription =
+  "Clínica dental en Polanco, CDMX. Valoración, prevención y tratamientos con un equipo de especialistas. Agenda por WhatsApp.";
+
 export const metadata: Metadata = {
-  title: "DM Ceuticals | La piel no es el enemigo. Es el mensajero.",
-  description:
-    "Comprende lo que tu piel intenta decirte. Sistemas integrales, evaluación Lenguaje de la Piel™ y acompañamiento personalizado con Mireya Díaz.",
+  title: "BellaSmile | Clínica Dental en Polanco, CDMX",
+  description: siteDescription,
+  openGraph: {
+    title: "BellaSmile | Clínica Dental en Polanco",
+    description: siteDescription,
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BellaSmile | Clínica Dental en Polanco",
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

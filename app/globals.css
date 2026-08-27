@@ -16,7 +16,10 @@
   --color-ink: #0a0a0a;
   --color-muted: #6b7280;
   --color-muted-light: #9ca3af;
-  --color-accent: #00a3a6;
+  --color-accent: #5eb3d9;
+  --color-dental-blue: #5eb3d9;
+  --color-dental-blue-deep: #2a7ab8;
+  --color-dental-blue-soft: #b8e4f5;
   --font-sans: var(--font-inter);
   --font-serif: var(--font-inter);
 }
@@ -222,31 +225,5 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
-
-/* Decoder under canvas — invisible, no hit-testing, never shows Safari ▶ */
-.splash-video-source {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-.splash-video-source::-webkit-media-controls-start-playback-button,
-.splash-video-source::-webkit-media-controls-overlay-play-button,
-.splash-video-source::-webkit-media-controls,
-.splash-video-source::-webkit-media-controls-enclosure,
-.splash-video-source::-webkit-media-controls-panel {
-  display: none !important;
-  -webkit-appearance: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
 
 

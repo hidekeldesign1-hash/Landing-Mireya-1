@@ -5,16 +5,17 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { DmLogo } from "@/components/brand/DmLogo";
-import { CartIcon, CloseIcon, MenuIcon } from "@/components/icons/LineIcons";
+import { BellaSmileLogo } from "@/components/brand/BellaSmileLogo";
+import { CloseIcon, MenuIcon } from "@/components/icons/LineIcons";
 import { links } from "@/lib/data/links";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#sintomas", label: "Síntomas" },
-  { href: "#caminos", label: "Caminos" },
-  { href: "#sistemas", label: "Sistemas" },
-  { href: "#consulta", label: "Consulta" },
+  { href: "#sonrisa", label: "Sonrisa" },
+  { href: "#equipo", label: "Equipo" },
+  { href: "#caminos", label: "Accesos" },
+  { href: "#resenas", label: "Reseñas" },
+  { href: "#ubicacion", label: "Ubicación" },
 ];
 
 export function Navbar() {
@@ -46,8 +47,8 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-14 items-center justify-between gap-4 lg:h-16">
-        <Link href="#inicio" className="inline-flex items-center" aria-label="DM Ceuticals">
-          <DmLogo className="h-7 w-auto sm:h-8" />
+        <Link href="#inicio" className="inline-flex items-center" aria-label="BellaSmile">
+          <BellaSmileLogo className="h-7 w-auto sm:h-8" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
@@ -64,20 +65,21 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            href={links.shopify}
-            className="cta-interactive cta-shine cta-shine-soft rounded-full border border-gray-200 p-2 text-black hover:bg-[#F9FAFB]"
-            aria-label="Ir a la tienda"
+            href={links.phoneWhatsApp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] uppercase tracking-[0.16em] text-gray-500 transition-colors hover:text-black"
           >
-            <CartIcon className="relative z-[1] h-4 w-4" />
+            WhatsApp
           </Link>
-          <Button href={links.startNow} className="px-4 py-2 text-[10px]">
-            Empezar ahora
+          <Button href={links.schedule} className="px-4 py-2 text-[10px]">
+            Agendar cita
           </Button>
         </div>
 
         <button
           type="button"
-          className="cta-interactive cta-shine cta-shine-soft rounded-full border border-gray-200 p-2 text-black lg:hidden"
+          className="cta-interactive cta-shine cta-shine-soft flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-gray-200 p-2 text-black lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
@@ -109,11 +111,11 @@ export function Navbar() {
                 </Link>
               ))}
               <Button
-                href={links.startNow}
+                href={links.schedule}
                 onClick={() => setOpen(false)}
                 className="mt-2 w-full"
               >
-                Empezar ahora
+                Agendar cita
               </Button>
             </Container>
           </motion.div>

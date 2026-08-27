@@ -1,19 +1,21 @@
-/** External destinations for CTAs across the landing. */
+import { clinic } from "@/lib/data/bellasmile";
+import { wa } from "@/lib/data/whatsapp";
+
+/** Enlaces y CTAs de BellaSmile */
 export const links = {
-  shopify: "https://dmceuticals.com/collections/all",
-  restore360: "https://dmceuticals.com/pages/restore-360",
-  evaluation: "https://dmceuticals.com/pages/reset-360",
-  reset360: "https://dmceuticals.com/pages/reset-360",
-  sistemasPage: "https://dmceuticals.com/pages/sistemas",
-  agendar: "https://dmceuticals.com/pages/agendar-consulta",
-  cart: "https://dmceuticals.com/cart",
-  consultation: "#consulta",
-  products: "#sintomas",
-  systems: "#sistemas",
-  startNow: "https://dmceuticals.com/pages/restore-360",
+  /** WhatsApp — cita general (CTA por defecto) */
+  schedule: wa.general(),
+  phone: clinic.phoneTel,
+  phoneWhatsApp: wa.general(),
+  whatsapp: wa,
+  directions: clinic.google.directionsUrl,
+  googleMaps: clinic.google.mapsUrl,
+  googleReviews: clinic.google.reviewsUrl,
+  conocer: "#inicio",
+  sonrisa: "#sonrisa",
+  tratamientos: "#sonrisa",
+  caminos: "#caminos",
+  equipo: "#equipo",
+  resenas: "#resenas",
+  ubicacion: "#ubicacion",
 } as const;
-
-export function productUrl(handle: string) {
-  return `https://dmceuticals.com/products/${handle}`;
-}
-

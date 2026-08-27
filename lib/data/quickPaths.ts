@@ -1,56 +1,41 @@
-import { wa } from "./whatsapp";
+import { wa } from "@/lib/data/whatsapp";
 
-export type PathStep = {
-  label: string;
-};
-
-export type JourneyPath = {
+export type QuickPath = {
   id: string;
   title: string;
   description: string;
-  steps: PathStep[];
   cta: string;
   href: string;
-  accent: "green" | "lavender" | "gold";
 };
 
-/** Legacy export — la página activa usa quickPaths.ts */
-export const paths: JourneyPath[] = [
+export const quickPaths: QuickPath[] = [
   {
     id: "valoracion",
     title: "Quiero una valoración",
     description: "No sé exactamente qué tratamiento necesito.",
-    steps: [],
     cta: "Agendar cita",
     href: wa.valoracion(),
-    accent: "green",
   },
   {
     id: "estetica",
     title: "Quiero mejorar mi sonrisa",
     description:
       "Quiero conocer opciones enfocadas en estética dental.",
-    steps: [],
-    cta: "Conocer opciones",
+    cta: "Agendar cita",
     href: wa.estetica(),
-    accent: "lavender",
   },
   {
     id: "molestia",
     title: "Tengo una molestia",
     description: "Necesito que un profesional revise mi caso.",
-    steps: [],
-    cta: "Agendar valoración",
+    cta: "Agendar cita",
     href: wa.molestia(),
-    accent: "green",
   },
   {
     id: "prevencion",
     title: "Quiero cuidar mi salud dental",
     description: "Busco prevención, limpieza y seguimiento.",
-    steps: [],
     cta: "Agendar cita",
     href: wa.prevencion(),
-    accent: "gold",
   },
 ];

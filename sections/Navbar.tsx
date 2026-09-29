@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#sonrisa", label: "Sonrisa" },
-  { href: "#equipo", label: "Equipo" },
+  { href: "#doctores", label: "Doctores" },
   { href: "#caminos", label: "Accesos" },
   { href: "#resenas", label: "Reseñas" },
   { href: "#ubicacion", label: "Ubicación" },
@@ -47,7 +47,7 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-14 items-center justify-between gap-4 lg:h-16">
-        <Link href="#inicio" className="inline-flex items-center" aria-label="BellaSmile">
+        <Link href="#inicio" className="inline-flex items-center" aria-label="RM SONRISAS">
           <BellaSmileLogo className="h-7 w-auto sm:h-8" />
         </Link>
 
@@ -56,22 +56,14 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-500 transition-colors hover:text-black"
+              className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-500 transition-colors hover:text-champagne"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            href={links.phoneWhatsApp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[10px] uppercase tracking-[0.16em] text-gray-500 transition-colors hover:text-black"
-          >
-            WhatsApp
-          </Link>
+        <div className="hidden items-center lg:flex">
           <Button href={links.schedule} className="px-4 py-2 text-[10px]">
             Agendar cita
           </Button>

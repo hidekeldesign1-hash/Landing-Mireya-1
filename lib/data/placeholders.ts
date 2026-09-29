@@ -1,4 +1,4 @@
-/** Imágenes generadas de referencia — sustituir con fotos reales de BellaSmile */
+/** Imágenes de referencia — sustituir con fotos reales de RM SONRISAS */
 
 export const generatedImages = {
   doctors: [

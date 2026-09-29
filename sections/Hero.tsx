@@ -47,18 +47,18 @@ function HeroWidgetCard({ className }: { className?: string }) {
         <div className="relative min-h-[200px]">
           <div className="flex h-full min-w-0 flex-col">
             <p className="text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-black/55">
-              Clínica Dental
+              Consultorio
             </p>
-            <p className="mt-3 text-[1.35rem] font-black uppercase leading-[1.05] tracking-tight text-black">
-              BellaSmile
+            <p className="mt-3 text-[1.15rem] font-black uppercase leading-[1.05] tracking-tight text-black">
+              RM SONRISAS
             </p>
-            <p className="mt-3 text-base leading-none tracking-tight text-black" aria-label="5 estrellas en Google">
+            <p className="mt-3 text-base leading-none tracking-tight text-champagne" aria-label="5 estrellas en Google">
               ★★★★★
             </p>
             <p className="mt-3 text-[11px] leading-relaxed text-gray-600">
               {clinic.google.rating.toFixed(1)} en Google · {clinic.google.reviewCount} reseñas
               <br />
-              Polanco · CDMX
+              Del Valle · CDMX
             </p>
 
             <a
@@ -91,8 +91,8 @@ export function Hero() {
       className="relative z-0 overflow-x-clip bg-[#e8eef4] md:min-h-[100svh]"
     >
       <h1 className="sr-only">
-        Tu sonrisa merece algo más que un tratamiento. Clínica dental BellaSmile
-        en Polanco, Ciudad de México.
+        Tu sonrisa merece algo más que un tratamiento. Consultorio dental RM
+        SONRISAS en la Colonia del Valle, Ciudad de México.
       </h1>
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_65%_35%,#f3f7fb_0%,#e8eef4_60%,#dfe8f0_100%)]"
@@ -122,7 +122,7 @@ export function Hero() {
         />
         <Image
           src="/images/Muela-hero.png"
-          alt="Ilustración dental BellaSmile"
+          alt="Ilustración dental RM SONRISAS"
           fill
           priority
           quality={95}
@@ -157,8 +157,8 @@ export function Hero() {
           </span>
           <span className="block">tratamiento.</span>
           <span className="mt-3 block max-w-sm text-xs font-medium normal-case leading-relaxed tracking-tight text-gray-600 sm:text-sm">
-            Clínica dental en Polanco. Valoración, prevención y tratamientos con
-            un equipo que te acompaña paso a paso.
+            Consultorio dental en la Colonia del Valle. Ortodoncia y atención
+            con el Dr. Ricardo Mayo y la Dra. Montserrat.
           </span>
         </motion.p>
 
@@ -173,7 +173,7 @@ export function Hero() {
             />
             <Image
               src="/images/Muela-hero.png"
-              alt="Ilustración dental BellaSmile"
+              alt="Ilustración dental RM SONRISAS"
               fill
               priority
               quality={95}
@@ -213,7 +213,7 @@ export function Hero() {
               variant="outline"
               className="w-full border-gray-300 bg-white/80 text-black hover:bg-white"
             >
-              Conocer BellaSmile
+              Conocer el consultorio
             </Button>
           </div>
         </motion.div>
@@ -227,11 +227,11 @@ export function Hero() {
 
         <motion.div
           variants={reduceMotion ? undefined : staggerItem}
-          className="mt-2 border-t border-black/10 pt-5 text-center"
+          className="mt-2 border-t border-champagne/50 pt-5 text-center"
         >
           <BellaSmileLogo className="mx-auto h-8 w-auto" />
           <p className="mt-3 text-[10px] font-medium uppercase leading-relaxed tracking-[0.1em] text-black/50">
-            Polanco, CDMX
+            Del Valle, CDMX
           </p>
         </motion.div>
       </motion.div>
@@ -256,8 +256,8 @@ export function Hero() {
               </span>
               <span className="block">tratamiento.</span>
               <span className="mt-3 block max-w-[22ch] text-[0.32em] font-medium normal-case leading-[1.25] tracking-tight text-black/60 sm:text-[0.28em]">
-                Clínica dental en Polanco. Valoración, prevención y tratamientos
-                con un equipo que te acompaña paso a paso.
+                Consultorio dental en la Colonia del Valle. Ortodoncia y
+                atención con el Dr. Ricardo Mayo y la Dra. Montserrat.
               </span>
             </motion.p>
           </div>
@@ -266,7 +266,7 @@ export function Hero() {
             variants={reduceMotion ? undefined : staggerItem}
             className="mt-12 lg:mt-0"
           >
-            <div className="max-w-xs border-l border-black/15 pl-4">
+            <div className="max-w-xs border-l border-champagne pl-4">
               <p className="text-[10px] font-medium uppercase leading-relaxed tracking-[0.08em] text-black/75 sm:text-[11px]">
                 Atención clara desde la primera visita, sin complicaciones ni
                 presión.
@@ -280,7 +280,7 @@ export function Hero() {
                   variant="outline"
                   className="shrink-0 whitespace-nowrap border-gray-300 bg-white/80 text-black backdrop-blur-md hover:bg-white"
                 >
-                  Conocer BellaSmile
+                  Conocer el consultorio
                 </Button>
               </div>
             </div>
@@ -313,10 +313,10 @@ export function Hero() {
         >
           <HeroWidgetCard className="ml-auto w-full max-w-[240px]" />
 
-          <div className="ml-auto max-w-[220px] border-t border-black/10 pt-5 text-right">
+          <div className="ml-auto max-w-[220px] border-t border-champagne/50 pt-5 text-right">
             <BellaSmileLogo className="ml-auto h-7 w-auto" />
             <p className="mt-3 text-[10px] font-medium uppercase leading-relaxed tracking-[0.1em] text-black/50">
-              Polanco, CDMX
+              Del Valle, CDMX
             </p>
           </div>
         </motion.div>

@@ -36,8 +36,8 @@ export function Systems() {
             Nuestros tratamientos
           </h2>
           <p className="mt-5 max-w-xl text-xs leading-relaxed text-gray-600 md:text-sm">
-            Opciones generales de atención dental en BellaSmile. El catálogo
-            definitivo se confirmará próximamente con nuestro equipo.
+            Opciones generales de atención dental en RM SONRISAS. El catálogo
+            se confirma en consulta con el Dr. Ricardo Mayo.
           </p>
         </MotionSection>
 

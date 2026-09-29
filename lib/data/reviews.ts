@@ -1,4 +1,4 @@
-/** Reseñas reales de Google Maps — BellaSmile */
+/** Reseñas publicadas en Google Maps — RM SONRISAS */
 
 export type GoogleReview = {
   id: string;
@@ -8,21 +8,26 @@ export type GoogleReview = {
 
 export const googleReviews: GoogleReview[] = [
   {
-    id: "review-raul-gomez",
-    author: "Raúl Gómez Lugo",
+    id: "review-rodolfo-hernandez",
+    author: "Rodolfo Hernández",
     quote:
-      "Me gusta mucho cuando tengo mis citas para mi tratamiento, el doctor Jorge y las doctoras son muy agradables y profesionales. Además la clínica está increíble, super limpia y ordenada. 10/10 :)",
+      "Doctores super calificados, muy atentos, puntuales, amables, me explicaron cada paso de los tratamientos y me sentí muy cómodo durante la consulta totalmente recomendable!",
   },
   {
-    id: "review-ayax-vega",
-    author: "Ayax Vega",
+    id: "review-giovanni-lopez",
+    author: "Giovanni López",
     quote:
-      "Tuve una muy buena experiencia. Las instalaciones son modernas, muy limpias y agradables. El Dr. Valenzuela y las doctoras brindan un trato cálido, amable y profesional, además de explicar cada procedimiento con claridad.",
+      "Excelente trato, siempre amables, pacientes ante dudas, actitud tranquila. Un buen trabajo se diferencia por los pequeños detalles, ellos los tienen!",
   },
   {
-    id: "review-nadia-sarabia",
-    author: "Nadia Sarabia",
+    id: "review-andres-hernandez",
+    author: "Andres Hernandez",
     quote:
-      "Excelente servicio de todos, especialmente del doctor Jorge, super recomendado. Buen trato, excelentes insumos y todo super lindo. No da miedo ir a consulta.",
+      "Excelente servicio. El Dr Ricardo y la Dra Montserrat son Excelentes",
+  },
+  {
+    id: "review-alejandra-ballesteros",
+    author: "Alejandra Ballesteros",
+    quote: "Exelente atención, muy profesionales",
   },
 ];

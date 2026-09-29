@@ -9,12 +9,12 @@ type BellaSmileLogoProps = {
 export function BellaSmileLogo({
   className,
   inverted = false,
-  title = "BellaSmile Clínica Dental",
+  title = "RM SONRISAS Consultorio",
 }: BellaSmileLogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 248 72"
+      viewBox="0 0 300 72"
       fill="none"
       role="img"
       aria-label={title}
@@ -26,28 +26,36 @@ export function BellaSmileLogo({
     >
       <title>{title}</title>
       <text
-        x="124"
+        x="150"
         y="34"
         fill="currentColor"
         textAnchor="middle"
         fontFamily="var(--font-inter), Inter, Helvetica Neue, Arial, sans-serif"
-        fontSize="28"
+        fontSize="22"
         fontWeight="700"
-        letterSpacing="0.04em"
+        letterSpacing="0.06em"
       >
-        BellaSmile
+        RM SONRISAS
       </text>
+      <line
+        x1="108"
+        y1="44"
+        x2="192"
+        y2="44"
+        stroke="#c4a36a"
+        strokeWidth="2"
+      />
       <text
-        x="124"
+        x="150"
         y="58"
         fill="currentColor"
         textAnchor="middle"
         fontFamily="var(--font-inter), Inter, Helvetica Neue, Arial, sans-serif"
         fontSize="11"
         fontWeight="500"
-        letterSpacing="0.28em"
+        letterSpacing="0.22em"
       >
-        CLÍNICA DENTAL
+        CONSULTORIO
       </text>
     </svg>
   );

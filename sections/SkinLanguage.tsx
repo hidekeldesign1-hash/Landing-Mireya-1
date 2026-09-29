@@ -26,21 +26,6 @@ const maskClasses = [
   "mask-blob-a",
 ];
 
-const detailPoints = [
-  {
-    title: "Valoración profesional",
-    text: "Una valoración permite conocer el estado de tu salud dental y determinar qué opciones pueden ser adecuadas para ti.",
-  },
-  {
-    title: "Sin suposiciones",
-    text: "No necesitas saber exactamente qué tratamiento necesitas antes de visitarnos.",
-  },
-  {
-    title: "Primer paso claro",
-    text: "Nuestros especialistas te orientan con claridad desde el inicio.",
-  },
-];
-
 export function SkinLanguage() {
   const [selectedId, setSelectedId] = useState(smileCategories[0].id);
   const selected =
@@ -70,6 +55,7 @@ export function SkinLanguage() {
           <h2 className="max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
             ¿Qué necesita tu sonrisa?
           </h2>
+          <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-gray-600">
             Selecciona un área para orientarte. Confirmaremos contigo la
             valoración adecuada en consulta.
@@ -85,38 +71,51 @@ export function SkinLanguage() {
                   <button
                     type="button"
                     onClick={() => selectCategory(category.id)}
-                    className={cn(
-                      "cta-interactive cta-shine cta-shine-soft group relative flex h-full w-full min-w-0 flex-col items-center px-2 py-5 text-center transition-colors duration-300 sm:px-3 sm:py-6",
-                      active
-                        ? "bg-white/45 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)] ring-1 ring-white/40"
-                        : "hover:bg-white/25",
-                    )}
                     aria-pressed={active}
+                    aria-controls="sonrisa-detalle"
+                    className={cn(
+                      "group relative flex h-full w-full min-w-0 flex-col items-center px-2 py-5 text-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black sm:px-3 sm:py-6",
+                      active ? "z-10 bg-white" : "hover:bg-white/40",
+                    )}
                   >
-                    {active ? (
-                      <span
-                        className="pointer-events-none absolute inset-0 animate-pulse rounded-sm bg-[#5eb3d9]/[0.06]"
-                        aria-hidden
-                      />
-                    ) : null}
-                    <span className="mb-3 font-mono text-[9px] tracking-widest text-gray-400">
+                    <span
+                      className={cn(
+                        "pointer-events-none absolute inset-x-0 bottom-0 h-1 transition-colors",
+                        active ? "bg-champagne" : "bg-transparent group-hover:bg-champagne/40",
+                      )}
+                      aria-hidden
+                    />
+                    <span
+                      className={cn(
+                        "mb-3 font-mono text-[9px] tracking-widest",
+                        active ? "text-champagne" : "text-gray-400",
+                      )}
+                    >
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <div
                       className={cn(
-                        "relative mb-3 h-16 w-16 shrink-0 overflow-hidden bg-gray-200 sm:h-20 sm:w-20",
+                        "relative mb-3 h-16 w-16 shrink-0 overflow-hidden bg-gray-200 transition-opacity sm:h-20 sm:w-20",
                         maskClasses[index % maskClasses.length],
+                        active
+                          ? "opacity-100 ring-2 ring-champagne ring-offset-2 ring-offset-white"
+                          : "opacity-60 group-hover:opacity-100",
                       )}
                     >
                       <Image
                         src={category.image}
-                        alt={`Referencia visual: ${category.name}`}
+                        alt=""
                         fill
                         sizes="80px"
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="w-full break-words text-[9px] font-bold uppercase leading-tight tracking-wide text-black sm:text-[10px]">
+                    <h3
+                      className={cn(
+                        "w-full break-words text-[9px] font-bold uppercase leading-tight tracking-wide sm:text-[10px]",
+                        active ? "text-black" : "text-gray-500",
+                      )}
+                    >
                       {category.name}
                     </h3>
                   </button>
@@ -142,12 +141,12 @@ export function SkinLanguage() {
             >
               <div className="space-y-6 p-6 sm:p-8 md:col-span-4 lg:p-10">
                 <h3 className="text-2xl font-black uppercase leading-none tracking-tighter text-black md:text-3xl">
-                  Empieza por entender tu sonrisa.
+                  {selected.headline}
                 </h3>
                 <ul className="divide-y divide-gray-200 border-y border-gray-200">
-                  {detailPoints.map((item) => (
+                  {selected.points.map((item) => (
                     <li key={item.title} className="flex gap-3 py-4">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-gray-200 text-black">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-champagne text-champagne">
                         <CheckIcon className="h-3 w-3" />
                       </span>
                       <div>
@@ -182,8 +181,7 @@ export function SkinLanguage() {
                   {selected.name}
                 </p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">
-                  Una valoración profesional ayuda a definir qué opciones pueden
-                  ser adecuadas para tu caso.
+                  {selected.summary}
                 </p>
                 <Button href={wa.categoria(selected.name)} className="mt-6 w-full">
                   Agendar cita

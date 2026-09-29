@@ -1,7 +1,7 @@
 import { clinic } from "@/lib/data/bellasmile";
 import { wa } from "@/lib/data/whatsapp";
 
-/** Enlaces y CTAs de BellaSmile */
+/** Enlaces y CTAs de RM SONRISAS */
 export const links = {
   /** WhatsApp — cita general (CTA por defecto) */
   schedule: wa.general(),
@@ -11,11 +11,12 @@ export const links = {
   directions: clinic.google.directionsUrl,
   googleMaps: clinic.google.mapsUrl,
   googleReviews: clinic.google.reviewsUrl,
+  writeReview: clinic.google.writeReviewUrl,
   conocer: "#inicio",
   sonrisa: "#sonrisa",
   tratamientos: "#sonrisa",
   caminos: "#caminos",
-  equipo: "#equipo",
+  equipo: "#doctores",
   resenas: "#resenas",
   ubicacion: "#ubicacion",
 } as const;

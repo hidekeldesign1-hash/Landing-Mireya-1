@@ -9,20 +9,20 @@ const inter = Inter({
 });
 
 const siteDescription =
-  "Clínica dental en Polanco, CDMX. Valoración, prevención y tratamientos con un equipo de especialistas. Agenda por WhatsApp.";
+  "Consultorio dental RM SONRISAS en la Colonia del Valle, Benito Juárez, CDMX. Ortodoncia con el Dr. Ricardo Mayo y la Dra. Montserrat. Agenda por WhatsApp.";
 
 export const metadata: Metadata = {
-  title: "BellaSmile | Clínica Dental en Polanco, CDMX",
+  title: "RM SONRISAS | Consultorio dental en Del Valle, CDMX",
   description: siteDescription,
   openGraph: {
-    title: "BellaSmile | Clínica Dental en Polanco",
+    title: "RM SONRISAS | Consultorio dental en Del Valle",
     description: siteDescription,
     locale: "es_MX",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BellaSmile | Clínica Dental en Polanco",
+    title: "RM SONRISAS | Consultorio dental en Del Valle",
     description: siteDescription,
   },
 };

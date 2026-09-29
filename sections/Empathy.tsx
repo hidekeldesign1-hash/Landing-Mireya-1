@@ -30,7 +30,7 @@ export function Empathy() {
         >
           <MotionItem className="flex flex-col justify-center bg-transparent p-8 md:col-span-4 md:p-10 lg:p-12">
             <p className="max-w-xs text-sm leading-relaxed text-gray-600">
-              En BellaSmile te explicamos cada paso con claridad, desde la
+              En RM SONRISAS te explicamos cada paso con claridad, desde la
               valoración hasta el plan de cuidado.
             </p>
           </MotionItem>
@@ -39,6 +39,7 @@ export function Empathy() {
             <h2 className="max-w-3xl text-3xl font-black uppercase leading-[0.95] tracking-tighter text-black md:text-4xl lg:text-5xl">
               Cuidar tu sonrisa no debería sentirse complicado.
             </h2>
+            <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           </MotionItem>
         </MotionSection>
       </div>

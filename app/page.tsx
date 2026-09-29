@@ -10,7 +10,7 @@ import { Footer } from "@/sections/Footer";
 import { DnaCanvasBackground } from "@/components/DnaCanvasBackground";
 
 /**
- * BellaSmile — Hero → Propuesta → Sonrisa → Equipo → Accesos → Reseñas → Ubicación + Cierre
+ * RM SONRISAS — Hero → Propuesta → Sonrisa → Doctores → Accesos → Reseñas → Ubicación + Cierre
  */
 export default function HomePage() {
   return (

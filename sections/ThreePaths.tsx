@@ -14,6 +14,7 @@ export function ThreePaths() {
           <h2 className="max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
             Encuentra la atención que estás buscando.
           </h2>
+          <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-gray-600">
             Cuatro formas de empezar según lo que necesitas hoy.
           </p>
@@ -27,7 +28,7 @@ export function ThreePaths() {
                   id={path.id}
                   className="flex h-full scroll-mt-28 flex-col bg-white/10 p-6 transition-colors hover:bg-white/25 sm:p-7 lg:p-8"
                 >
-                  <span className="mb-6 font-mono text-xs tracking-widest text-gray-400">
+                  <span className="mb-6 font-mono text-xs tracking-widest text-champagne">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 

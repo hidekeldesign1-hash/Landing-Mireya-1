@@ -1,40 +1,46 @@
-/** Datos confirmados de BellaSmile — Clínica Dental, Polanco CDMX */
+/** Datos confirmados en Google Maps — RM SONRISAS, Colonia del Valle, CDMX */
 
 export const clinic = {
-  name: "BellaSmile",
-  tagline: "Clínica Dental",
-  phone: "55 4925 1163",
-  phoneTel: "tel:+525549251163",
-  /** Número WhatsApp México — sin + ni espacios */
-  whatsapp: "525549251163",
+  name: "RM SONRISAS",
+  tagline: "Consultorio dental",
+  doctor: "Dr. Ricardo Mayo",
+  specialty: "Ortodoncista",
+  phone: "55 7907 6408",
+  phoneTel: "tel:+525579076408",
+  /** WhatsApp México: 52 + 10 dígitos, sin el 1 intermedio */
+  whatsapp: "525579076408",
   address: {
-    street: "Hegel 228",
-    neighborhood: "Chapultepec Morales, Polanco V Secc",
-    municipality: "Miguel Hidalgo",
-    zip: "11560",
+    street: "Adolfo Prieto 1462",
+    neighborhood: "Col del Valle Centro",
+    municipality: "Benito Juárez",
+    zip: "03104",
     city: "Ciudad de México, CDMX",
-    full: "Hegel 228, Chapultepec Morales, Polanco V Secc, Miguel Hidalgo, 11560 Ciudad de México, CDMX",
+    full: "Adolfo Prieto 1462, Col del Valle Centro, Benito Juárez, 03104 Ciudad de México, CDMX",
   },
   coordinates: {
-    lat: 19.4345562,
-    lng: -99.1878968,
+    lat: 19.3730969,
+    lng: -99.1723203,
   },
   google: {
     rating: 5.0,
-    reviewCount: 46,
+    reviewCount: 4,
+    placeId: "ChIJP-l71DT_0YURFOPgwFFNHRA",
     placeUrl:
-      "https://www.google.com/maps/place/BellaSmile+-+Cl%C3%ADnica+Dental/@19.4345562,-99.1904717,17z/data=!4m6!3m5!1s0x85d1f900671d0df7:0xe7eee9a855da017c!8m2!3d19.4345562!4d-99.1878968!16s%2Fg%2F11ymb3tc4w?entry=ttu",
+      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
     mapsUrl:
-      "https://www.google.com/maps/place/BellaSmile+-+Cl%C3%ADnica+Dental/@19.4345562,-99.1904717,17z/data=!4m6!3m5!1s0x85d1f900671d0df7:0xe7eee9a855da017c!8m2!3d19.4345562!4d-99.1878968!16s%2Fg%2F11ymb3tc4w?entry=ttu",
+      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
     directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=19.4345562,-99.1878968&destination_place_id=ChIJ33ANZ5D_1oURcQHaVajp7uc",
+      "https://www.google.com/maps/dir/?api=1&destination=19.3730969,-99.1723203&destination_place_id=ChIJP-l71DT_0YURFOPgwFFNHRA",
     reviewsUrl:
-      "https://www.google.com/maps/place/BellaSmile+-+Cl%C3%ADnica+Dental/@19.4345562,-99.1904717,17z/data=!4m6!3m5!1s0x85d1f900671d0df7:0xe7eee9a855da017c!8m2!3d19.4345562!4d-99.1878968!16s%2Fg%2F11ymb3tc4w?entry=ttu",
+      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
+    writeReviewUrl:
+      "https://search.google.com/local/writereview?placeid=ChIJP-l71DT_0YURFOPgwFFNHRA&hl=es",
     embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.4870647825296!2d-99.19047172065429!3d19.434556200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f900671d0df7%3A0xe7eee9a855da017c!2sBellaSmile%20-%20Cl%C3%ADnica%20Dental!5e0!3m2!1ses!2smx!4v1787861126412!5m2!1ses!2smx",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.9088999206933!2d-99.1723203!3d19.3730969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff34d47be93f%3A0x101d4d51c0e0e314!2sRM%20SONRISAS!5e0!3m2!1ses!2smx!4v1790696491573!5m2!1ses!2smx",
   },
   hours: [
-    { days: "Lunes — Viernes", time: "10:00–14:00 / 15:00–19:00" },
-    { days: "Sábado", time: "08:00–14:00" },
+    { days: "Lunes — Viernes", time: "10:00–21:00" },
+    { days: "Sábado", time: "10:00–16:00" },
+    { days: "Domingo", time: "11:00–16:00" },
   ],
 } as const;

@@ -6,33 +6,33 @@ import { links } from "@/lib/data/links";
 
 export function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-black text-white">
+    <footer className="border-t-2 border-champagne bg-black text-white">
       <Container className="px-6 py-12 sm:px-8 lg:px-10">
         <div className="flex flex-col items-center text-center">
           <BellaSmileLogo inverted className="mx-auto h-10 w-auto sm:h-11" />
           <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
-            Polanco, CDMX
+            Del Valle, CDMX
           </p>
         </div>
 
         <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-10 border-y border-white/10 py-10 sm:grid-cols-3 sm:gap-8">
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
               Dirección
             </p>
             <address className="not-italic text-xs leading-relaxed text-white/75">
               {clinic.address.street}
               <br />
-              Polanco V Secc
+              {clinic.address.neighborhood}
               <br />
               {clinic.address.municipality}
               <br />
-              Ciudad de México
+              {clinic.address.zip} Ciudad de México
             </address>
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
               Contacto
             </p>
             <a
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
               Horarios
             </p>
             <ul className="space-y-3 text-xs leading-relaxed text-white/75">
@@ -82,11 +82,11 @@ export function Footer() {
             <span className="relative z-[1]">Cómo llegar</span>
           </a>
           <p className="max-w-md text-xs leading-relaxed text-white/45">
-            Clínica dental en Polanco. Valoración, prevención y tratamientos con
-            un equipo de especialistas.
+            Consultorio dental en la Colonia del Valle. Ortodoncia con el Dr.
+            Ricardo Mayo y la Dra. Montserrat.
           </p>
           <p className="text-[10px] uppercase tracking-[0.16em] text-white/30">
-            © {new Date().getFullYear()} BellaSmile. Todos los derechos reservados.
+            © {new Date().getFullYear()} RM SONRISAS. Todos los derechos reservados.
           </p>
         </div>
       </Container>

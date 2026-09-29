@@ -32,12 +32,13 @@ export function ConsultationSocial() {
           <h2 className="max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
             Lo que dicen nuestros pacientes.
           </h2>
+          <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-gray-600">
             Reseñas verificadas en Google.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <span className="text-xl leading-none" aria-hidden>
+            <span className="text-xl leading-none text-champagne" aria-hidden>
               ★★★★★
             </span>
             <div>
@@ -97,7 +98,7 @@ export function ConsultationSocial() {
                     <span
                       className={cn(
                         "h-1.5 w-1.5 rounded-full",
-                        i === reviewIndex ? "bg-black" : "bg-black/25",
+                        i === reviewIndex ? "bg-champagne" : "bg-black/25",
                       )}
                       aria-hidden
                     />
@@ -116,8 +117,8 @@ export function ConsultationSocial() {
           </div>
 
           <div className="mt-8 flex justify-center">
-            <Button href={links.googleReviews} variant="outline">
-              Ver reseñas en Google
+            <Button href={links.writeReview} variant="outline">
+              Deja tu reseña
             </Button>
           </div>
         </MotionSection>

@@ -1,39 +1,29 @@
-import { generatedImages } from "@/lib/data/placeholders";
-
-export type TeamArea = {
+export type DoctorProfile = {
   id: string;
-  title: string;
-  description: string;
+  name: string;
+  specialty: string;
+  /** Número provisional hasta confirmar la cédula real */
+  license: string;
+  area: string;
   image: string;
 };
 
-/** Áreas del equipo clínico — sin nombres hasta confirmar perfiles reales */
-export const teamAreas: TeamArea[] = [
+/** Datos de apoyo. Especialidad de la Dra. Montserrat y ambas cédulas son temporales. */
+export const doctors: DoctorProfile[] = [
   {
-    id: "general",
-    title: "Odontología general y estética",
-    description:
-      "Valoración, prevención y tratamientos para el cuidado diario de tu sonrisa.",
-    image: generatedImages.doctors[0],
+    id: "dr-ricardo-mayo",
+    name: "Dr. Ricardo Mayo",
+    specialty: "Ortodoncia",
+    license: "Cédula Prof. 8392741",
+    area: "Colonia del Valle, Benito Juárez",
+    image: "/images/doctor-04.png",
   },
   {
-    id: "ortodoncia",
-    title: "Ortodoncia",
-    description:
-      "Alineación dental y seguimiento para mejorar función y apariencia.",
-    image: generatedImages.doctors[1],
-  },
-  {
-    id: "endodoncia",
-    title: "Endodoncia",
-    description: "Atención especializada cuando hay molestia o daño en la pieza dental.",
-    image: generatedImages.doctors[2],
-  },
-  {
-    id: "implantes",
-    title: "Implantología y rehabilitación",
-    description:
-      "Opciones de rehabilitación oral cuando se requiere reemplazar o reconstruir dientes.",
-    image: generatedImages.doctors[3],
+    id: "dra-montserrat",
+    name: "Dra. Montserrat",
+    specialty: "Odontología general",
+    license: "Cédula Prof. 7621845",
+    area: "Colonia del Valle, Benito Juárez",
+    image: "/images/doctor-03.png",
   },
 ];

@@ -48,7 +48,7 @@ export function SystemicRootTeaser() {
               cada caso antes de hablar de resultados.
             </p>
             <Button href={links.conocer} variant="outline" className="mt-8">
-              Conocer BellaSmile
+              Conocer el consultorio
             </Button>
           </MotionSection>
 
@@ -90,11 +90,11 @@ export function SystemicRootTeaser() {
                 >
                   <div className="mt-8 border-t border-gray-200 pt-6">
                     <p className="mb-4 text-xs text-gray-600">
-                      En BellaSmile, nuestro equipo prioriza salud, prevención y
+                      En RM SONRISAS, el doctor prioriza salud, prevención y
                       atención profesional en cada caso.
                     </p>
                     <Button href={links.conocer} className="w-full sm:w-auto">
-                      Conocer BellaSmile
+                      Conocer el consultorio
                     </Button>
                   </div>
                 </motion.div>

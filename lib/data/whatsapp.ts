@@ -8,38 +8,38 @@ export function buildWhatsAppUrl(message: string): string {
 export const wa = {
   general: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, me gustaría agendar una cita en su clínica de Polanco.",
+      "Hola RM SONRISAS, me gustaría agendar una cita en su consultorio de la Colonia del Valle.",
     ),
   hero: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, vi su sitio web y me gustaría agendar una cita.",
+      "Hola RM SONRISAS, vi su sitio web y me gustaría agendar una cita.",
     ),
   valoracion: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, me gustaría agendar una valoración dental.",
+      "Hola RM SONRISAS, me gustaría agendar una valoración dental.",
     ),
   estetica: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, me interesa conocer opciones de estética dental.",
+      "Hola RM SONRISAS, me interesa conocer opciones de estética dental.",
     ),
   molestia: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, tengo una molestia dental y me gustaría que un profesional revise mi caso.",
+      "Hola RM SONRISAS, tengo una molestia dental y me gustaría que el doctor revise mi caso.",
     ),
   prevencion: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, me gustaría agendar una cita para prevención, limpieza y seguimiento dental.",
+      "Hola RM SONRISAS, me gustaría agendar una cita para prevención, limpieza y seguimiento dental.",
     ),
   equipo: () =>
     buildWhatsAppUrl(
-      "Hola BellaSmile, me gustaría agendar una cita con su equipo de especialistas.",
+      "Hola RM SONRISAS, me gustaría agendar una cita con el Dr. Ricardo Mayo o la Dra. Montserrat.",
     ),
   categoria: (name: string) =>
     buildWhatsAppUrl(
-      `Hola BellaSmile, me interesa información sobre ${name}. Me gustaría agendar una valoración.`,
+      `Hola RM SONRISAS, me interesa información sobre ${name}. Me gustaría agendar una valoración.`,
     ),
   tratamiento: (name: string) =>
     buildWhatsAppUrl(
-      `Hola BellaSmile, me interesa información sobre el tratamiento de ${name}.`,
+      `Hola RM SONRISAS, me interesa información sobre el tratamiento de ${name}.`,
     ),
 } as const;

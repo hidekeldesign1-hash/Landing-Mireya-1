@@ -9,20 +9,20 @@ const inter = Inter({
 });
 
 const siteDescription =
-  "Consultorio dental RM SONRISAS en la Colonia del Valle, Benito Juárez, CDMX. Ortodoncia con el Dr. Ricardo Mayo y la Dra. Montserrat. Agenda por WhatsApp.";
+  "Odontopediatra en San José Insurgentes, Benito Juárez, CDMX. Atención dental para niños con Ana Karen. Agenda por WhatsApp.";
 
 export const metadata: Metadata = {
-  title: "RM SONRISAS | Consultorio dental en Del Valle, CDMX",
+  title: "Ana Karen | Odontopediatra en San José Insurgentes",
   description: siteDescription,
   openGraph: {
-    title: "RM SONRISAS | Consultorio dental en Del Valle",
+    title: "Ana Karen | Odontopediatra en San José Insurgentes",
     description: siteDescription,
     locale: "es_MX",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RM SONRISAS | Consultorio dental en Del Valle",
+    title: "Ana Karen | Odontopediatra en San José Insurgentes",
     description: siteDescription,
   },
 };
@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="min-h-screen bg-[#F2F4F7] font-sans text-ink antialiased">
+      <body className="min-h-screen bg-[#fff6ee] font-sans text-ink antialiased">
         {children}
       </body>
     </html>

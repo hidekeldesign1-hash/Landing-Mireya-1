@@ -52,13 +52,13 @@ export function SkinLanguage() {
     <section id="sonrisa" className="relative bg-transparent px-4 py-8 md:px-8 md:py-10">
       <Container className={cn(glassCardClass, "py-0")}>
         <MotionSection className="px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
-          <h2 className="max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
-            ¿Qué necesita tu sonrisa?
+          <h2 className="whitespace-nowrap text-[clamp(0.82rem,2.15vw,2.7rem)] font-black uppercase leading-none tracking-tighter text-black">
+            ¿Qué necesita la boca de tu hijo?
           </h2>
           <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-gray-600">
-            Selecciona un área para orientarte. Confirmaremos contigo la
-            valoración adecuada en consulta.
+            Elige un tema de odontopediatría. En la consulta se confirma qué
+            corresponde a la edad y a la boca de ese niño.
           </p>
         </MotionSection>
 

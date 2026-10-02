@@ -14,225 +14,225 @@ export type SmileCategory = {
   points: SmilePoint[];
 };
 
-/** Textos generales de cada área. Sin cifras ni técnicas no confirmadas del consultorio. */
+/** Orientación de odontopediatría. Sin cifras ni técnicas no confirmadas del consultorio. */
 export const smileCategories: SmileCategory[] = [
+  {
+    id: "primera-visita",
+    name: "Primera visita",
+    image: categoryImages[0],
+    headline: "La primera visita es para conocer, no para asustar.",
+    summary:
+      "Se revisa la boca del niño y se explica a la familia qué se ve. Conviene al salir el primer diente y, a más tardar, al año.",
+    points: [
+      {
+        title: "Qué se hace",
+        text: "Se miran dientes, encías y cómo muerde. También se habla de cepillado y de lo que preocupa en casa.",
+      },
+      {
+        title: "Para quién",
+        text: "Bebés, niñas y niños. La cita se adapta a la edad, no a un protocolo de adulto.",
+      },
+      {
+        title: "Qué se aclara",
+        text: "Si hace falta un siguiente paso, se dice en esa visita. No se arma un plan sin haberlo visto.",
+      },
+    ],
+  },
   {
     id: "limpieza",
     name: "Limpieza",
-    image: categoryImages[0],
-    headline: "La limpieza quita lo que el cepillo no alcanza.",
+    image: categoryImages[1],
+    headline: "La limpieza infantil quita lo que el cepillo no alcanza.",
     summary:
-      "Retira placa y sarro para cuidar dientes y encías. En la misma cita se ve si hace falta algo más.",
+      "Retira placa de los dientes de leche y de los permanentes que ya salieron. Se explica cómo seguir en casa.",
     points: [
       {
-        title: "Placa y sarro",
-        text: "El sarro no sale con el cepillado. La profilaxis lo retira de los dientes y de la línea de la encía.",
+        title: "Placa",
+        text: "En muelas de atrás se acumula aunque el niño se cepille. La profilaxis la retira.",
       },
       {
         title: "Encías",
-        text: "Menos placa acumulada ayuda a controlar el sangrado y la inflamación gingival.",
+        text: "Si sangran al cepillar, se revisa si alcanza con higiene o si hay que verlas aparte.",
       },
       {
-        title: "Revisión",
-        text: "Si la encía está más afectada, la limpieza sola no alcanza y se indica el siguiente paso.",
+        title: "En casa",
+        text: "Se indica quién debe cepillar, hasta qué edad, y qué zonas se están saltando.",
       },
     ],
   },
   {
-    id: "estetica",
-    name: "Estética",
-    image: categoryImages[1],
-    headline: "La estética se planea sobre el diente real.",
+    id: "caries",
+    name: "Caries",
+    image: categoryImages[2],
+    headline: "Una caries en diente de leche también se trata.",
     summary:
-      "Color, forma y proporción se revisan antes de proponer aclaramiento, resina o carillas.",
+      "El diente temporal guarda el espacio del permanente. Si hay lesión, se valora si se sella, se restaura o se vigila.",
     points: [
       {
-        title: "Qué se observa",
-        text: "Color, forma, bordes y cómo se relacionan los dientes al sonreír y al morder.",
+        title: "Por qué importa",
+        text: "Una caries no tratada duele, se infecta y puede adelantar la pérdida del diente de leche.",
       },
       {
-        title: "Opciones habituales",
-        text: "Aclaramiento, resina o carillas. La indicación depende del esmalte, la mordida y el desgaste.",
+        title: "Qué se decide",
+        text: "Depende del tamaño de la lesión y de cuánto tiempo le queda al diente en boca.",
       },
       {
-        title: "Límite",
-        text: "El resultado se explica después de revisar el caso. No se promete un cambio sin esa valoración.",
+        title: "Cómo se explica",
+        text: "Al niño se le dice qué se va a hacer, con calma, antes de empezar.",
       },
     ],
   },
   {
-    id: "restauracion",
-    name: "Restauración",
-    image: categoryImages[2],
-    headline: "Restaurar es devolver forma y función.",
+    id: "selladores",
+    name: "Selladores",
+    image: categoryImages[3],
+    headline: "El sellador protege las muelas nuevas.",
     summary:
-      "Repara caries, fracturas o desgaste. El material se elige según cuánto diente queda sano.",
+      "Cubre los surcos de las muelas permanentes recién salidas, donde el cepillo entra menos.",
     points: [
       {
         title: "Cuándo",
-        text: "Cuando una caries, una fractura o el desgaste ya comprometen el diente.",
+        text: "Cuando erupcionan los primeros molares permanentes, cerca de los 6 años, y los segundos, cerca de los 12.",
       },
       {
-        title: "Cómo",
-        text: "Resina directa o una restauración hecha en laboratorio, según el tamaño del daño.",
+        title: "Qué no es",
+        text: "No sustituye el cepillado ni el control de azúcar. Suma una barrera en el surco.",
       },
       {
-        title: "Para qué",
-        text: "Sellar el diente, recuperar la masticación y evitar que la lesión avance.",
+        title: "Revisión",
+        text: "En las citas siguientes se ve si el sellador sigue en su lugar.",
+      },
+    ],
+  },
+  {
+    id: "fluor",
+    name: "Flúor",
+    image: categoryImages[4],
+    headline: "El flúor se indica según el riesgo de caries.",
+    summary:
+      "No es igual para todos los niños. La cantidad y la frecuencia salen de lo que se ve en boca y de la higiene en casa.",
+    points: [
+      {
+        title: "En consulta",
+        text: "Se valora una aplicación profesional cuando el riesgo de caries lo justifica.",
+      },
+      {
+        title: "En casa",
+        text: "La pasta se elige por edad: una cantidad mínima en los pequeños y supervisión de un adulto.",
+      },
+      {
+        title: "Límite",
+        text: "Más flúor no significa mejor cuidado. Se usa la dosis que corresponde.",
+      },
+    ],
+  },
+  {
+    id: "golpes",
+    name: "Golpes",
+    image: categoryImages[5],
+    headline: "Un golpe en un diente se revisa pronto.",
+    summary:
+      "Un diente de leche o permanente que se mueve, se oscurece o se sale necesita valoración. El tiempo cuenta.",
+    points: [
+      {
+        title: "Qué observar",
+        text: "Sangrado, diente flojo, cambio de color, dolor al morder o un fragmento que falta.",
+      },
+      {
+        title: "Qué hacer",
+        text: "Escribir por WhatsApp y traer al niño. Si el diente permanente salió completo, guardarlo en leche y venir.",
+      },
+      {
+        title: "Después",
+        text: "Algunos golpes se vigilan en las semanas siguientes, aunque el día del golpe no duela.",
       },
     ],
   },
   {
     id: "ortodoncia",
     name: "Ortodoncia",
-    image: categoryImages[3],
-    headline: "La ortodoncia corrige dientes y mordida.",
+    image: categoryImages[6],
+    headline: "La mordida del niño se revisa mientras crece.",
     summary:
-      "Alinea los dientes y mejora el cierre. El tipo de aparato se decide después del diagnóstico.",
+      "No toda mordida se corrige con brackets de inmediato. Primero se ve el recambio, el espacio y los hábitos.",
     points: [
       {
-        title: "Diagnóstico",
-        text: "Se revisan alineación y mordida. Cuando hace falta, se piden radiografías o modelos.",
+        title: "Qué se mira",
+        text: "Cómo cierran los dientes, si falta espacio y si un hábito está empujando la mordida.",
       },
-      {
-        title: "Aparato",
-        text: "Brackets o alineadores se indican según el movimiento que el caso necesita.",
-      },
-      {
-        title: "Qué se busca",
-        text: "Dientes más ordenados y una mordida que cierre mejor, no solo un cambio de frente.",
-      },
-    ],
-  },
-  {
-    id: "encias",
-    name: "Encías",
-    image: categoryImages[4],
-    headline: "La encía inflamada también se trata.",
-    summary:
-      "Sangrado, retracción o mal aliento persistente se valoran. No se resuelven solo con enjuague.",
-    points: [
-      {
-        title: "Señales",
-        text: "Sangrado al cepillar, retracción, mal aliento que no cede o diente con movilidad.",
-      },
-      {
-        title: "Qué se hace",
-        text: "Control de placa y, si hay bolsas, limpieza por debajo de la encía.",
-      },
-      {
-        title: "Por qué importa",
-        text: "Una encía inestable pone en riesgo el diente y también las restauraciones.",
-      },
-    ],
-  },
-  {
-    id: "endodoncia",
-    name: "Endodoncia",
-    image: categoryImages[5],
-    headline: "El conducto se trata para conservar el diente.",
-    summary:
-      "Se valora cuando hay dolor o infección en la raíz. El fin es conservar la pieza, si el diente lo permite.",
-    points: [
       {
         title: "Cuándo",
-        text: "Dolor espontáneo, sensibilidad que no cede o infección en la punta de la raíz.",
+        text: "Hay casos que conviene ver antes de que salgan todos los permanentes. Otros esperan el recambio.",
       },
       {
-        title: "En qué consiste",
-        text: "Retirar el tejido dañado del conducto, desinfectar y sellar el espacio.",
-      },
-      {
-        title: "Si no se puede",
-        text: "Cuando el diente no es conservable, la opción correcta es la extracción.",
+        title: "Qué no se promete",
+        text: "El aparato, si hace falta, se indica después del diagnóstico. No antes.",
       },
     ],
   },
   {
-    id: "implantes",
-    name: "Implantes",
-    image: categoryImages[6],
-    headline: "Un implante sustituye la raíz, no solo la corona.",
+    id: "leche",
+    name: "Dientes de leche",
+    image: categoryImages[7],
+    headline: "Los dientes de leche guardan el lugar.",
     summary:
-      "Repone un diente ausente si hay hueso y encía suficientes. Eso se confirma con estudios.",
+      "Se vigilan erupción, caries y el momento en que cambian. Perder uno antes de tiempo mueve a los demás.",
     points: [
       {
-        title: "Qué es",
-        text: "Un tornillo que se integra al hueso y sostiene una corona, un puente o una prótesis.",
+        title: "Erupción",
+        text: "Se revisa si los dientes salen en tiempo y si el permanente tiene espacio.",
       },
       {
-        title: "Requisito",
-        text: "Hueso y encía adecuados. Se confirman en la revisión y con imagen cuando hace falta.",
+        title: "Si se pierde pronto",
+        text: "Se valora si hace falta mantener el espacio hasta que erupcione el definitivo.",
       },
       {
-        title: "Tiempo",
-        text: "La corona no siempre se coloca el mismo día. El plan sigue la cicatrización.",
+        title: "En casa",
+        text: "Un diente de leche cariado no se deja «porque igual se cae».",
+      },
+    ],
+  },
+  {
+    id: "habitos",
+    name: "Hábitos",
+    image: categoryImages[8],
+    headline: "El chupón y el dedo también mueven la mordida.",
+    summary:
+      "Se revisa si el hábito está cambiando los dientes o el paladar, y a qué edad conviene dejarlo.",
+    points: [
+      {
+        title: "Cuáles",
+        text: "Dedo, chupón, biberón prolongado o respirar por la boca.",
+      },
+      {
+        title: "Qué se ve",
+        text: "Mordida abierta, dientes superiores hacia adelante o paladar estrecho.",
+      },
+      {
+        title: "Cómo se aborda",
+        text: "Primero se explica a la familia. Un aparato solo se plantea si el hábito ya deformó la mordida.",
       },
     ],
   },
   {
     id: "prevencion",
     name: "Prevención",
-    image: categoryImages[7],
-    headline: "Prevenir es detectar antes de que duela.",
+    image: categoryImages[9],
+    headline: "Prevenir es ver la boca antes de que duela.",
     summary:
-      "Revisiones para encontrar caries y cambios en la encía a tiempo. La frecuencia depende del riesgo.",
+      "Controles para encontrar caries y cambios de la mordida a tiempo. La siguiente cita depende del riesgo de ese niño.",
     points: [
       {
         title: "Revisión",
-        text: "Una caries inicial y la inflamación gingival se ven antes de que haya dolor.",
+        text: "Una mancha blanca y una encía inflamada se ven antes del dolor.",
       },
       {
         title: "Higiene",
-        text: "Se ajusta según lo que se encuentra en boca: técnica, zonas que se saltan y dieta.",
+        text: "Se ajusta la técnica, la pasta y lo que come entre comidas.",
       },
       {
         title: "Frecuencia",
-        text: "La siguiente cita no es igual para todos. La marca el riesgo de cada persona.",
-      },
-    ],
-  },
-  {
-    id: "valoracion",
-    name: "Valoración",
-    image: categoryImages[8],
-    headline: "Primero se revisa. Después se propone.",
-    summary:
-      "Dientes, encías, mordida y el motivo de la consulta. Sirve cuando aún no sabes qué necesitas.",
-    points: [
-      {
-        title: "Qué incluye",
-        text: "Revisión de dientes, encías y mordida, más lo que te trajo a consulta.",
-      },
-      {
-        title: "Qué obtienes",
-        text: "Una explicación de lo que se ve y de las opciones que aplican a tu caso.",
-      },
-      {
-        title: "Qué no es",
-        text: "No es un tratamiento cerrado ni un plan armado sin haberte revisado.",
-      },
-    ],
-  },
-  {
-    id: "infantil",
-    name: "Infantil",
-    image: categoryImages[9],
-    headline: "La boca del niño se revisa mientras crece.",
-    summary:
-      "Control de dientes de leche, recambio y caries. La primera visita conviene al salir el primer diente, y a más tardar al año.",
-    points: [
-      {
-        title: "Desarrollo",
-        text: "Se vigilan los dientes de leche, el recambio y el espacio para los permanentes.",
-      },
-      {
-        title: "Prevención",
-        text: "Caries, higiene y hábitos como el dedo o el chupón si están moviendo la mordida.",
-      },
-      {
-        title: "Primera visita",
-        text: "Se recomienda cuando erupciona el primer diente y no después del primer año.",
+        text: "No es la misma para un niño sin caries que para uno que ya las tuvo.",
       },
     ],
   },

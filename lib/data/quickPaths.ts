@@ -10,31 +10,30 @@ export type QuickPath = {
 
 export const quickPaths: QuickPath[] = [
   {
-    id: "valoracion",
-    title: "Quiero una valoración",
-    description: "No sé exactamente qué tratamiento necesito.",
+    id: "primera-visita",
+    title: "Es su primera visita",
+    description: "Quiero llevar a mi hijo o hija con una odontopediatra.",
     cta: "Agendar cita",
     href: wa.valoracion(),
   },
   {
-    id: "estetica",
-    title: "Quiero mejorar mi sonrisa",
-    description:
-      "Quiero conocer opciones enfocadas en estética dental.",
-    cta: "Agendar cita",
-    href: wa.estetica(),
-  },
-  {
-    id: "molestia",
-    title: "Tengo una molestia",
-    description: "Necesito que un profesional revise mi caso.",
+    id: "golpe",
+    title: "Se golpeó o le duele",
+    description: "Un diente se movió, se oscureció o le molesta al comer.",
     cta: "Agendar cita",
     href: wa.molestia(),
   },
   {
+    id: "leche",
+    title: "Quiero revisar sus dientes de leche",
+    description: "Caries, cambio de dientes o cómo está cerrando la mordida.",
+    cta: "Agendar cita",
+    href: wa.estetica(),
+  },
+  {
     id: "prevencion",
-    title: "Quiero cuidar mi salud dental",
-    description: "Busco prevención, limpieza y seguimiento.",
+    title: "Quiero un control de prevención",
+    description: "Limpieza, flúor y seguimiento según su edad.",
     cta: "Agendar cita",
     href: wa.prevencion(),
   },

@@ -5,14 +5,14 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { BellaSmileLogo } from "@/components/brand/BellaSmileLogo";
+import { ClinicName } from "@/components/brand/ClinicName";
 import { CloseIcon, MenuIcon } from "@/components/icons/LineIcons";
 import { links } from "@/lib/data/links";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#sonrisa", label: "Sonrisa" },
-  { href: "#doctores", label: "Doctores" },
+  { href: "#doctora", label: "Doctora" },
   { href: "#caminos", label: "Accesos" },
   { href: "#resenas", label: "Reseñas" },
   { href: "#ubicacion", label: "Ubicación" },
@@ -47,8 +47,8 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-14 items-center justify-between gap-4 lg:h-16">
-        <Link href="#inicio" className="inline-flex items-center" aria-label="RM SONRISAS">
-          <BellaSmileLogo className="h-7 w-auto sm:h-8" />
+        <Link href="#inicio" className="inline-flex items-center" aria-label="Ana Karen Odontopediatra">
+          <ClinicName />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">

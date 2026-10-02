@@ -71,6 +71,6 @@ export const treatments: Treatment[] = [
     description:
       "El primer paso para conocer qué necesita tu sonrisa.",
     focus: "Diagnóstico · Claridad · Primer paso",
-    image: generatedImages.dental.valoracion,
+    image: generatedImages.dental.primera,
   },
 ];

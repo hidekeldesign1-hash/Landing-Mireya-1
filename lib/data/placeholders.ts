@@ -1,4 +1,4 @@
-/** Imágenes de referencia — sustituir con fotos reales de RM SONRISAS */
+/** Fotos de referencia de atención infantil. No son fotos del consultorio. */
 
 export const generatedImages = {
   doctors: [
@@ -8,28 +8,24 @@ export const generatedImages = {
     "/images/doctor-04.png",
   ],
   dental: {
-    limpieza: "/images/dental-limpieza.png",
-    estetica: "/images/dental-estetica.png",
-    restauracion: "/images/dental-estetica.png",
-    ortodoncia: "/images/dental-ortodoncia.png",
-    encias: "/images/dental-limpieza.png",
-    endodoncia: "/images/dental-valoracion.png",
-    implantes: "/images/dental-implantes.png",
-    prevencion: "/images/dental-limpieza.png",
-    valoracion: "/images/dental-valoracion.png",
-    infantil: "/images/dental-infantil.png",
+    primera: "/images/pedia-primera.jpg",
+    limpieza: "/images/pedia-limpieza.jpg",
+    caries: "/images/pedia-caries.jpg",
+    ortodoncia: "/images/pedia-ortodoncia.jpg",
+    prevencion: "/images/pedia-prevencion.jpg",
+    leche: "/images/pedia-leche.jpg",
   },
 } as const;
 
 export const categoryImages = [
+  generatedImages.dental.primera,
   generatedImages.dental.limpieza,
-  generatedImages.dental.estetica,
-  generatedImages.dental.restauracion,
-  generatedImages.dental.ortodoncia,
-  generatedImages.dental.encias,
-  generatedImages.dental.endodoncia,
-  generatedImages.dental.implantes,
+  generatedImages.dental.caries,
+  generatedImages.dental.limpieza,
   generatedImages.dental.prevencion,
-  generatedImages.dental.valoracion,
-  generatedImages.dental.infantil,
+  generatedImages.dental.primera,
+  generatedImages.dental.ortodoncia,
+  generatedImages.dental.leche,
+  generatedImages.dental.leche,
+  generatedImages.dental.prevencion,
 ] as const;

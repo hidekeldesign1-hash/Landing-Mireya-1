@@ -1,7 +1,7 @@
 import { clinic } from "@/lib/data/bellasmile";
 import { wa } from "@/lib/data/whatsapp";
 
-/** Enlaces y CTAs de RM SONRISAS */
+/** Enlaces y CTAs de Ana Karen Odontopediatra */
 export const links = {
   /** WhatsApp — cita general (CTA por defecto) */
   schedule: wa.general(),
@@ -16,7 +16,7 @@ export const links = {
   sonrisa: "#sonrisa",
   tratamientos: "#sonrisa",
   caminos: "#caminos",
-  equipo: "#doctores",
+  equipo: "#doctora",
   resenas: "#resenas",
   ubicacion: "#ubicacion",
 } as const;

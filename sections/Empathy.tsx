@@ -6,11 +6,11 @@ export function Empathy() {
   return (
     <section className="relative z-10 bg-transparent px-4 pb-8 pt-0 md:px-8 md:pb-10">
       <div
-        className="pointer-events-none absolute -left-20 -top-24 z-0 h-[520px] w-[520px] rounded-full bg-[#5eb3d9]/25 opacity-50 blur-[140px]"
+        className="pointer-events-none absolute -left-20 -top-24 z-0 h-[520px] w-[520px] rounded-full bg-[#e25b4a]/20 opacity-60 blur-[140px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-[10%] -top-10 z-0 h-64 w-64 rounded-full bg-[#2a7ab8]/20 opacity-50 blur-[100px]"
+        className="pointer-events-none absolute left-[10%] -top-10 z-0 h-64 w-64 rounded-full bg-[#2aa89a]/25 opacity-60 blur-[100px]"
         aria-hidden
       />
 
@@ -30,14 +30,14 @@ export function Empathy() {
         >
           <MotionItem className="flex flex-col justify-center bg-transparent p-8 md:col-span-4 md:p-10 lg:p-12">
             <p className="max-w-xs text-sm leading-relaxed text-gray-600">
-              En RM SONRISAS te explicamos cada paso con claridad, desde la
-              valoración hasta el plan de cuidado.
+              Ana Karen es odontopediatra: la cita se explica al niño y a quien
+              lo acompaña, antes de revisar o tratar.
             </p>
           </MotionItem>
 
           <MotionItem className="bg-transparent p-8 md:col-span-8 md:p-10 lg:p-12">
             <h2 className="max-w-3xl text-3xl font-black uppercase leading-[0.95] tracking-tighter text-black md:text-4xl lg:text-5xl">
-              Cuidar tu sonrisa no debería sentirse complicado.
+              La odontopediatría se explica con calma.
             </h2>
             <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
           </MotionItem>

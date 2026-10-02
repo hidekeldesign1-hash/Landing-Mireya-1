@@ -4,20 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { BellaSmileLogo } from "@/components/brand/BellaSmileLogo";
+import { ClinicName } from "@/components/brand/ClinicName";
 import {
   staggerContainer,
   staggerItem,
   fadeInScale,
 } from "@/lib/animations";
-import { clinic } from "@/lib/data/bellasmile";
 import { links } from "@/lib/data/links";
+import { doctors } from "@/lib/data/teamMembers";
 import { cn } from "@/lib/utils";
 
-const portraitMask = {
-  WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 22%)",
-  maskImage: "linear-gradient(to top, transparent 0%, black 22%)",
-} as const;
+const doctor = doctors[0];
 
 function HeroWidgetCard({ className }: { className?: string }) {
   const reduceMotion = useReducedMotion();
@@ -46,28 +43,37 @@ function HeroWidgetCard({ className }: { className?: string }) {
       <div className="overflow-hidden rounded-2xl border border-white/35 bg-white/20 p-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)] backdrop-blur-xl">
         <div className="relative min-h-[200px]">
           <div className="flex h-full min-w-0 flex-col">
-            <p className="text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-black/55">
-              Consultorio
+            <p className="text-[10px] font-medium uppercase leading-snug tracking-[0.12em] text-coral">
+              Odontopediatra
             </p>
-            <p className="mt-3 text-[1.15rem] font-black uppercase leading-[1.05] tracking-tight text-black">
-              RM SONRISAS
-            </p>
-            <p className="mt-3 text-base leading-none tracking-tight text-champagne" aria-label="5 estrellas en Google">
+            <p
+              className="mt-2 text-sm tracking-[0.18em] text-[#f4b400]"
+              aria-label="5 de 5 estrellas en Google"
+            >
               ★★★★★
             </p>
+            <p className="mt-2 text-[1.15rem] font-black uppercase leading-[1.05] tracking-tight text-black">
+              Ana Karen
+            </p>
             <p className="mt-3 text-[11px] leading-relaxed text-gray-600">
-              {clinic.google.rating.toFixed(1)} en Google · {clinic.google.reviewCount} reseñas
+              Dentista infantil
               <br />
-              Del Valle · CDMX
+              San José Insurgentes · CDMX
+            </p>
+            <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.14em] text-gray-500">
+              Cédula de ejemplo
+            </p>
+            <p className="text-sm font-semibold tracking-wide text-black">
+              {doctor.licenseExample}
             </p>
 
             <a
-              href={links.googleReviews}
+              href={links.writeReview}
               target="_blank"
               rel="noopener noreferrer"
-              className="cta-interactive cta-shine mt-4 inline-flex w-full items-center justify-between gap-2 rounded-full border border-gray-200 bg-white/70 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-black hover:bg-white"
+              className="cta-interactive cta-shine mt-4 inline-flex w-full items-center justify-between gap-2 rounded-full border border-coral/30 bg-white/70 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-black hover:bg-white"
             >
-              <span className="relative z-[1]">Ver reseñas</span>
+              <span className="relative z-[1]">Deja tu reseña</span>
               <span
                 className="relative z-[1] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black text-[10px] text-white"
                 aria-hidden
@@ -88,19 +94,19 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative z-0 overflow-x-clip bg-[#e8eef4] md:min-h-[100svh]"
+      className="relative bg-[#fff3ea] md:min-h-[100svh]"
     >
       <h1 className="sr-only">
-        Tu sonrisa merece algo más que un tratamiento. Consultorio dental RM
-        SONRISAS en la Colonia del Valle, Ciudad de México.
+        Ana Karen, odontopediatra en San José Insurgentes, Ciudad de México.
+        Atención dental para niños.
       </h1>
       <div
-        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_65%_35%,#f3f7fb_0%,#e8eef4_60%,#dfe8f0_100%)]"
+        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_65%_35%,#fffaf6_0%,#fff3ea_55%,#ffe0d2_100%)]"
         aria-hidden
       />
 
       <div
-        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_15%_85%,rgba(94,179,217,0.32)_0%,transparent_52%),radial-gradient(ellipse_at_55%_95%,rgba(42,122,184,0.22)_0%,transparent_48%)]"
+        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_12%_80%,rgba(226,24,120,0.32)_0%,transparent_50%),radial-gradient(ellipse_at_80%_20%,rgba(42,168,220,0.34)_0%,transparent_46%),radial-gradient(ellipse_at_50%_100%,rgba(255,196,48,0.38)_0%,transparent_42%)]"
         aria-hidden
       />
       <div
@@ -108,34 +114,15 @@ export function Hero() {
         aria-hidden
       />
 
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 z-10 hidden h-[82vh] w-[min(58vw,760px)] -translate-x-1/2 md:block"
-        style={portraitMask}
-      >
-        <div
-          className="hero-glow-ring pointer-events-none absolute left-[6%] top-[6%] h-[68%] w-[78%] rounded-full opacity-80"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute left-[16%] top-[14%] h-[40%] w-[55%] rounded-full bg-white/25 blur-3xl"
-          aria-hidden
-        />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 hidden h-[82vh] w-[min(58vw,760px)] -translate-x-1/2 md:block">
         <Image
-          src="/images/Muela-hero.png"
-          alt="Ilustración dental RM SONRISAS"
+          src="/images/Muela-hero-nina.png"
+          alt="Muela sonriente, mascota del consultorio de odontopediatría"
           fill
           priority
           quality={95}
           sizes="58vw"
-          className="object-cover object-bottom"
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[32%] bg-gradient-to-t from-[#e8eef4] via-[#e8eef4]/65 to-transparent"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute bottom-0 left-0 h-[48%] w-[42%] bg-gradient-to-tr from-[#5eb3d9]/15 via-transparent to-transparent"
-          aria-hidden
+          className="hero-tooth-float object-contain object-bottom"
         />
       </div>
 
@@ -150,15 +137,15 @@ export function Hero() {
           aria-hidden="true"
           className="w-full max-w-[16ch] text-3xl font-black uppercase leading-tight tracking-tighter text-black sm:text-4xl"
         >
-          <span className="block">Tu sonrisa</span>
-          <span className="block">merece algo</span>
-          <span className="mt-1 block font-light text-black/70">
-            más que un
+          <span className="block">Odontopediatría</span>
+          <span className="block">para que la</span>
+          <span className="mt-1 block font-light text-coral">
+            visita se sienta
           </span>
-          <span className="block">tratamiento.</span>
+          <span className="block">tranquila.</span>
           <span className="mt-3 block max-w-sm text-xs font-medium normal-case leading-relaxed tracking-tight text-gray-600 sm:text-sm">
-            Consultorio dental en la Colonia del Valle. Ortodoncia y atención
-            con el Dr. Ricardo Mayo y la Dra. Montserrat.
+            Odontopediatra en San José Insurgentes. Ana Karen atiende a niños
+            desde la primera visita.
           </span>
         </motion.p>
 
@@ -166,28 +153,20 @@ export function Hero() {
           variants={reduceMotion ? undefined : fadeInScale}
           className="relative mx-auto my-2 h-[320px] w-full max-w-[280px] will-change-transform"
         >
-          <div className="absolute inset-0 overflow-hidden" style={portraitMask}>
-            <div
-              className="hero-glow-ring pointer-events-none absolute left-[4%] top-[4%] h-[70%] w-[82%] rounded-full opacity-70"
-              aria-hidden
-            />
+          <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/images/Muela-hero.png"
-              alt="Ilustración dental RM SONRISAS"
+              src="/images/Muela-hero-nina.png"
+              alt="Muela sonriente, mascota del consultorio de odontopediatría"
               fill
               priority
               quality={95}
               sizes="280px"
-              className="rounded-b-full object-cover object-top"
-            />
-            <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#e8eef4] via-[#e8eef4]/70 to-transparent"
-              aria-hidden
+              className="hero-tooth-float object-contain object-center"
             />
           </div>
           <Link
             href="#sonrisa"
-            aria-label="Ver servicios dentales"
+            aria-label="Ver atención de odontopediatría"
             className="cta-interactive cta-shine cta-shine-soft absolute bottom-3 right-1 z-20 flex h-11 w-11 min-h-[44px] min-w-[44px] flex-col items-center justify-center rounded-full border border-white/80 bg-white/70 text-center shadow-sm backdrop-blur-md"
           >
             <span className="relative z-[1] text-[10px] text-black" aria-hidden>
@@ -201,8 +180,7 @@ export function Hero() {
           className="z-20 flex w-full max-w-xs flex-col gap-4"
         >
           <p className="text-xs leading-relaxed text-gray-600 sm:text-sm">
-            Atención clara desde la primera visita, sin complicaciones ni
-            presión.
+            Les explicamos qué va a pasar, sin prisa y sin presión.
           </p>
           <div className="flex w-full max-w-xs flex-col gap-3">
             <Button href={links.whatsapp.hero()} className="w-full bg-black text-white">
@@ -229,9 +207,9 @@ export function Hero() {
           variants={reduceMotion ? undefined : staggerItem}
           className="mt-2 border-t border-champagne/50 pt-5 text-center"
         >
-          <BellaSmileLogo className="mx-auto h-8 w-auto" />
+          <ClinicName className="mx-auto items-center" />
           <p className="mt-3 text-[10px] font-medium uppercase leading-relaxed tracking-[0.1em] text-black/50">
-            Del Valle, CDMX
+            San José Insurgentes, CDMX
           </p>
         </motion.div>
       </motion.div>
@@ -249,15 +227,15 @@ export function Hero() {
               aria-hidden="true"
               className="max-w-[16ch] text-left text-3xl font-black uppercase leading-tight tracking-tighter text-black sm:text-4xl lg:text-[3.1rem] xl:text-[3.6rem] lg:leading-[0.9]"
             >
-              <span className="block">Tu sonrisa</span>
-              <span className="block">merece algo</span>
-              <span className="mt-1 block font-light text-black/70">
-                más que un
+              <span className="block">Odontopediatría</span>
+              <span className="block">para que la</span>
+              <span className="mt-1 block font-light text-coral">
+                visita se sienta
               </span>
-              <span className="block">tratamiento.</span>
+              <span className="block">tranquila.</span>
               <span className="mt-3 block max-w-[22ch] text-[0.32em] font-medium normal-case leading-[1.25] tracking-tight text-black/60 sm:text-[0.28em]">
-                Consultorio dental en la Colonia del Valle. Ortodoncia y
-                atención con el Dr. Ricardo Mayo y la Dra. Montserrat.
+                Odontopediatra en San José Insurgentes. Ana Karen atiende a
+                niños desde la primera visita.
               </span>
             </motion.p>
           </div>
@@ -268,8 +246,7 @@ export function Hero() {
           >
             <div className="max-w-xs border-l border-champagne pl-4">
               <p className="text-[10px] font-medium uppercase leading-relaxed tracking-[0.08em] text-black/75 sm:text-[11px]">
-                Atención clara desde la primera visita, sin complicaciones ni
-                presión.
+                Les explicamos qué va a pasar, sin prisa y sin presión.
               </p>
               <div className="mt-5 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href={links.whatsapp.hero()} className="shrink-0 whitespace-nowrap">
@@ -291,7 +268,7 @@ export function Hero() {
           <div className="absolute bottom-8 left-1/2 z-30 -translate-x-1/2">
             <Link
               href="#sonrisa"
-              aria-label="Ver servicios dentales"
+              aria-label="Ver atención de odontopediatría"
               className="cta-interactive cta-shine cta-shine-soft pointer-events-auto relative flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/80 bg-white/45 text-center shadow-[0_8px_40px_rgba(0,0,0,0.1)] backdrop-blur-md sm:h-12 sm:w-12"
             >
               <span
@@ -314,18 +291,14 @@ export function Hero() {
           <HeroWidgetCard className="ml-auto w-full max-w-[240px]" />
 
           <div className="ml-auto max-w-[220px] border-t border-champagne/50 pt-5 text-right">
-            <BellaSmileLogo className="ml-auto h-7 w-auto" />
+            <ClinicName className="ml-auto items-end text-right" />
             <p className="mt-3 text-[10px] font-medium uppercase leading-relaxed tracking-[0.1em] text-black/50">
-              Del Valle, CDMX
+              San José Insurgentes, CDMX
             </p>
           </div>
         </motion.div>
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-36 bg-gradient-to-t from-[#e8eef4] via-[#e8eef4]/55 to-transparent"
-        aria-hidden
-      />
     </section>
   );
 }

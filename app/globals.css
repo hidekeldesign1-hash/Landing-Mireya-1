@@ -17,7 +17,8 @@
   --color-muted: #6b7280;
   --color-muted-light: #9ca3af;
   --color-accent: #5eb3d9;
-  --color-champagne: #c4a36a;
+  --color-champagne: #c2185b;
+  --color-coral: #c5363a;
   --color-dental-blue: #5eb3d9;
   --color-dental-blue-deep: #2a7ab8;
   --color-dental-blue-soft: #b8e4f5;
@@ -30,7 +31,7 @@ html {
 }
 
 body {
-  background-color: #f2f4f7;
+  background-color: #fff6ee;
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -201,6 +202,21 @@ body {
   100% {
     transform: translateX(130%) skewX(-12deg);
   }
+}
+
+@keyframes hero-tooth-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.hero-tooth-float {
+  animation: hero-tooth-float 4.2s ease-in-out infinite;
+  transform-origin: center bottom;
 }
 
 @media (prefers-reduced-motion: reduce) {

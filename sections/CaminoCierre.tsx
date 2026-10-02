@@ -16,7 +16,7 @@ export function CaminoCierre() {
           className="scroll-mt-24 border-b border-white/25 px-6 py-10 sm:px-10 lg:px-16 lg:py-14"
         >
           <h2 className="max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
-            RM SONRISAS en Del Valle.
+            Ana Karen en San José Insurgentes.
           </h2>
           <span className="mt-5 block h-px w-12 bg-champagne" aria-hidden />
 
@@ -59,7 +59,7 @@ export function CaminoCierre() {
 
             <div className="relative min-h-[280px] overflow-hidden rounded-2xl border border-white/30 bg-white/10 lg:col-span-8 lg:min-h-[360px]">
               <iframe
-                title="Ubicación de RM SONRISAS en Google Maps"
+                title="Ubicación de Ana Karen Odontopediatra en Google Maps"
                 src={clinic.google.embedUrl}
                 className="absolute inset-0 h-full w-full border-0"
                 loading="lazy"
@@ -72,11 +72,11 @@ export function CaminoCierre() {
 
         <MotionSection className="px-6 py-10 text-center sm:px-10 lg:px-16 lg:py-14">
           <h2 className="mx-auto max-w-3xl text-3xl font-black uppercase leading-none tracking-tighter text-black md:text-4xl lg:text-5xl">
-            Tu sonrisa empieza aquí.
+            La sonrisa de tu hijo empieza aquí.
           </h2>
           <span className="mx-auto mt-5 block h-px w-12 bg-champagne" aria-hidden />
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-gray-600">
-            Escríbenos por WhatsApp para agendar tu visita en la Colonia del Valle.
+            Escríbenos por WhatsApp para agendar la visita en San José Insurgentes.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href={links.whatsapp.general()}>Agendar cita</Button>

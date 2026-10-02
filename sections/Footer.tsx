@@ -1,4 +1,4 @@
-import { BellaSmileLogo } from "@/components/brand/BellaSmileLogo";
+import { ClinicName } from "@/components/brand/ClinicName";
 import { WhatsAppIcon } from "@/components/icons/LineIcons";
 import { Container } from "@/components/ui/Container";
 import { clinic } from "@/lib/data/bellasmile";
@@ -6,18 +6,18 @@ import { links } from "@/lib/data/links";
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-champagne bg-black text-white">
+    <footer className="border-t-2 border-champagne bg-[#4a1d78] text-white">
       <Container className="px-6 py-12 sm:px-8 lg:px-10">
         <div className="flex flex-col items-center text-center">
-          <BellaSmileLogo inverted className="mx-auto h-10 w-auto sm:h-11" />
-          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white/50">
-            Del Valle, CDMX
+          <ClinicName inverted className="items-center" />
+          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.2em] text-white/70">
+            San José Insurgentes, CDMX
           </p>
         </div>
 
         <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-10 border-y border-white/10 py-10 sm:grid-cols-3 sm:gap-8">
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ffb3d8]">
               Dirección
             </p>
             <address className="not-italic text-xs leading-relaxed text-white/75">
@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ffb3d8]">
               Contacto
             </p>
             <a
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-champagne">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#ffb3d8]">
               Horarios
             </p>
             <ul className="space-y-3 text-xs leading-relaxed text-white/75">
@@ -82,11 +82,10 @@ export function Footer() {
             <span className="relative z-[1]">Cómo llegar</span>
           </a>
           <p className="max-w-md text-xs leading-relaxed text-white/45">
-            Consultorio dental en la Colonia del Valle. Ortodoncia con el Dr.
-            Ricardo Mayo y la Dra. Montserrat.
+            Odontopediatría en San José Insurgentes. Consulta para bebés, niñas y niños.
           </p>
           <p className="text-[10px] uppercase tracking-[0.16em] text-white/30">
-            © {new Date().getFullYear()} RM SONRISAS. Todos los derechos reservados.
+            © {new Date().getFullYear()} Ana Karen Odontopediatra. Todos los derechos reservados.
           </p>
         </div>
       </Container>

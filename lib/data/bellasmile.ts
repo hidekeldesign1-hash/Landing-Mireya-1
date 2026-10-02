@@ -1,46 +1,45 @@
-/** Datos confirmados en Google Maps — RM SONRISAS, Colonia del Valle, CDMX */
+/** Datos publicados en Google Maps — Ana Karen Odontopediatra */
 
 export const clinic = {
-  name: "RM SONRISAS",
-  tagline: "Consultorio dental",
-  doctor: "Dr. Ricardo Mayo",
-  specialty: "Ortodoncista",
-  phone: "55 7907 6408",
-  phoneTel: "tel:+525579076408",
-  /** WhatsApp México: 52 + 10 dígitos, sin el 1 intermedio */
-  whatsapp: "525579076408",
+  name: "Ana Karen",
+  tagline: "Odontopediatra",
+  category: "Dentista infantil",
+  doctor: "Ana Karen",
+  specialty: "Odontopediatría",
+  phone: "55 1333 0130",
+  phoneTel: "tel:+525513330130",
+  /** WhatsApp México: 52 + 10 dígitos */
+  whatsapp: "525513330130",
   address: {
-    street: "Adolfo Prieto 1462",
-    neighborhood: "Col del Valle Centro",
+    street: "Diego Becerra 1",
+    neighborhood: "San José Insurgentes",
     municipality: "Benito Juárez",
-    zip: "03104",
+    zip: "03900",
     city: "Ciudad de México, CDMX",
-    full: "Adolfo Prieto 1462, Col del Valle Centro, Benito Juárez, 03104 Ciudad de México, CDMX",
+    full: "Diego Becerra 1, San José Insurgentes, Benito Juárez, 03900 Ciudad de México, CDMX",
   },
   coordinates: {
-    lat: 19.3730969,
-    lng: -99.1723203,
+    lat: 19.3666167,
+    lng: -99.1884487,
   },
   google: {
-    rating: 5.0,
-    reviewCount: 4,
-    placeId: "ChIJP-l71DT_0YURFOPgwFFNHRA",
+    placeId: "ChIJ04kGICj_0YURTE5PfVVy2Ss",
     placeUrl:
-      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
+      "https://www.google.com/maps/place/Ana+Karen+Odontopediatra/@19.3666167,-99.1884487,17z/data=!4m6!3m5!1s0x85d1ff28200689d3:0x2bd972557d4f4e4c!8m2!3d19.3666167!4d-99.1884487!16s%2Fg%2F11lh7rtw_t",
     mapsUrl:
-      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
+      "https://www.google.com/maps/place/Ana+Karen+Odontopediatra/@19.3666167,-99.1884487,17z/data=!4m6!3m5!1s0x85d1ff28200689d3:0x2bd972557d4f4e4c!8m2!3d19.3666167!4d-99.1884487!16s%2Fg%2F11lh7rtw_t",
     directionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=19.3730969,-99.1723203&destination_place_id=ChIJP-l71DT_0YURFOPgwFFNHRA",
+      "https://www.google.com/maps/dir/?api=1&destination=19.3666167,-99.1884487&destination_place_id=ChIJ04kGICj_0YURTE5PfVVy2Ss",
     reviewsUrl:
-      "https://www.google.com/maps/place/RM+SONRISAS/@19.3730969,-99.1723203,17z/data=!4m6!3m5!1s0x85d1ff34d47be93f:0x101d4d51c0e0e314!8m2!3d19.3730969!4d-99.1723203!16s%2Fg%2F11yvykhj12",
+      "https://www.google.com/maps/place/Ana+Karen+Odontopediatra/@19.3666167,-99.1884487,17z/data=!4m6!3m5!1s0x85d1ff28200689d3:0x2bd972557d4f4e4c!8m2!3d19.3666167!4d-99.1884487!16s%2Fg%2F11lh7rtw_t",
     writeReviewUrl:
-      "https://search.google.com/local/writereview?placeid=ChIJP-l71DT_0YURFOPgwFFNHRA&hl=es",
+      "https://search.google.com/local/writereview?placeid=ChIJ04kGICj_0YURTE5PfVVy2Ss&hl=es",
     embedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.9088999206933!2d-99.1723203!3d19.3730969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff34d47be93f%3A0x101d4d51c0e0e314!2sRM%20SONRISAS!5e0!3m2!1ses!2smx!4v1790696491573!5m2!1ses!2smx",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.058565240461!2d-99.18844866276844!3d19.366616657878534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff28200689d3%3A0x2bd972557d4f4e4c!2sAna%20Karen%20Odontopediatra!5e0!3m2!1ses!2smx!4v1790903480682!5m2!1ses!2smx",
   },
   hours: [
-    { days: "Lunes — Viernes", time: "10:00–21:00" },
-    { days: "Sábado", time: "10:00–16:00" },
-    { days: "Domingo", time: "11:00–16:00" },
+    { days: "Lunes — Viernes", time: "14:30–19:30" },
+    { days: "Sábado", time: "09:00–13:30" },
+    { days: "Domingo", time: "Cerrado" },
   ],
 } as const;

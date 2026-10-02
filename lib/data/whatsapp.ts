@@ -4,42 +4,41 @@ export function buildWhatsAppUrl(message: string): string {
   return `https://wa.me/${clinic.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
-/** Mensajes predefinidos según contexto del CTA */
 export const wa = {
   general: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, me gustaría agendar una cita en su consultorio de la Colonia del Valle.",
+      "Hola Ana Karen, me gustaría agendar una cita de odontopediatría en San José Insurgentes.",
     ),
   hero: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, vi su sitio web y me gustaría agendar una cita.",
+      "Hola Ana Karen, vi su sitio y me gustaría agendar una cita para mi hijo o hija.",
     ),
   valoracion: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, me gustaría agendar una valoración dental.",
+      "Hola Ana Karen, me gustaría agendar la primera visita de odontopediatría para mi hijo o hija.",
     ),
   estetica: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, me interesa conocer opciones de estética dental.",
+      "Hola Ana Karen, me gustaría revisar los dientes de leche de mi hijo o hija.",
     ),
   molestia: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, tengo una molestia dental y me gustaría que el doctor revise mi caso.",
+      "Hola Ana Karen, un niño se golpeó un diente o tiene una molestia. Me gustaría agendar una revisión.",
     ),
   prevencion: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, me gustaría agendar una cita para prevención, limpieza y seguimiento dental.",
+      "Hola Ana Karen, me gustaría agendar un control de prevención y limpieza de odontopediatría.",
     ),
   equipo: () =>
     buildWhatsAppUrl(
-      "Hola RM SONRISAS, me gustaría agendar una cita con el Dr. Ricardo Mayo o la Dra. Montserrat.",
+      "Hola Ana Karen, me gustaría agendar una cita de odontopediatría.",
     ),
   categoria: (name: string) =>
     buildWhatsAppUrl(
-      `Hola RM SONRISAS, me interesa información sobre ${name}. Me gustaría agendar una valoración.`,
+      `Hola Ana Karen, me interesa información sobre ${name} para un niño. Me gustaría agendar una cita.`,
     ),
   tratamiento: (name: string) =>
     buildWhatsAppUrl(
-      `Hola RM SONRISAS, me interesa información sobre el tratamiento de ${name}.`,
+      `Hola Ana Karen, me interesa información sobre ${name} en odontopediatría.`,
     ),
 } as const;

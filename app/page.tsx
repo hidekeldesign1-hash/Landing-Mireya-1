@@ -10,16 +10,16 @@ import { Footer } from "@/sections/Footer";
 import { DnaCanvasBackground } from "@/components/DnaCanvasBackground";
 
 /**
- * RM SONRISAS — Hero → Propuesta → Sonrisa → Doctores → Accesos → Reseñas → Ubicación + Cierre
+ * Ana Karen Odontopediatra — Hero → Propuesta → Sonrisa → Doctora → Accesos → Reseñas → Ubicación + Cierre
  */
 export default function HomePage() {
   return (
     <>
       <DnaCanvasBackground />
+      <Hero />
       <div className="relative z-10 overflow-x-clip">
         <Navbar />
         <main className="bg-transparent">
-          <Hero />
           <Empathy />
           <SkinLanguage />
           <Team />
